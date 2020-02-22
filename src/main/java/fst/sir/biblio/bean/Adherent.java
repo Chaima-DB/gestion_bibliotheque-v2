@@ -7,6 +7,7 @@ package fst.sir.biblio.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,10 +19,14 @@ import javax.persistence.Temporal;
  *
  * @author HP
  */
-@Entity
+@Entity	
 public class Adherent implements Serializable{
     
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String cin;
