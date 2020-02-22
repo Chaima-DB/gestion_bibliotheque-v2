@@ -6,6 +6,7 @@
 package fst.sir.biblio.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -36,6 +37,7 @@ public class Adherent implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateInscription;
     private String nomPhoto;
+    private BigDecimal tel;
     @ManyToOne
     private TypeAdherent typeAdherent;
 
@@ -59,7 +61,19 @@ public class Adherent implements Serializable{
         return id;
     }
 
-    public void setId(Long id) {
+    public BigDecimal getTel() {
+		return tel;
+	}
+
+
+
+	public void setTel(BigDecimal tel) {
+		this.tel = tel;
+	}
+
+
+
+	public void setId(Long id) {
         this.id = id;
     }
 
