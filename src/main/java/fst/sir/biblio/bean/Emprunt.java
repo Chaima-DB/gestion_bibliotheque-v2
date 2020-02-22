@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -31,7 +32,11 @@ public class Emprunt implements Serializable {
     private String ref;
     @OneToMany(mappedBy = "emprunt")
     private List<EmpruntDetail> empruntDetails;
-
+    
+    @ManyToMany
+    private Livre livre;
+    @ManyToMany
+    private Adherent adherent;
     public Emprunt() {
     }
 
