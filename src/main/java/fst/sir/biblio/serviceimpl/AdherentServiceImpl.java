@@ -49,5 +49,11 @@ public class AdherentServiceImpl implements AdherentService{
 		return adherentDao.findByEmail(email);
 	}
 
+	@Override
+	public List<Adherent> findByprofession(String profession) {
+		
+		return adherentDao.findByprofession(profession);
+	}
+
 	
 	}
