@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -31,19 +32,24 @@ public class Livre implements Serializable {
     private String isbn;
     private String titre;
     private String auteur;
+    
+    @ManyToOne
     private Categorie categorie;
+    
     private String resume;
     private String nomPhoto;
     private long nbrPage;
     private String tome;
+    private int disponible;
+    
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateEdition;
 
     public Livre() {
     }
 
-    
-    public Livre(Long id, String isbn, String titre, String auteur, Categorie categorie, String resume, String nomPhoto, long nbrPage, Date dateEdition) {
+    public Livre(Long id, String isbn, String titre, String auteur, Categorie categorie, String resume, String nomPhoto, long nbrPage, String tome, int disponible, Date dateEdition) {
         this.id = id;
         this.isbn = isbn;
         this.titre = titre;
@@ -52,6 +58,8 @@ public class Livre implements Serializable {
         this.resume = resume;
         this.nomPhoto = nomPhoto;
         this.nbrPage = nbrPage;
+        this.tome = tome;
+        this.disponible = disponible;
         this.dateEdition = dateEdition;
     }
 
@@ -127,6 +135,14 @@ public class Livre implements Serializable {
         this.tome = tome;
     }
 
+    public int getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(int disponible) {
+        this.disponible = disponible;
+    }
+
     public Date getDateEdition() {
         return dateEdition;
     }
@@ -137,11 +153,13 @@ public class Livre implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 19 * hash + Objects.hashCode(this.id);
-        hash = 19 * hash + Objects.hashCode(this.isbn);
-        hash = 19 * hash + Objects.hashCode(this.auteur);
-        hash = 19 * hash + Objects.hashCode(this.categorie);
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.isbn);
+        hash = 53 * hash + Objects.hashCode(this.titre);
+        hash = 53 * hash + Objects.hashCode(this.auteur);
+        hash = 53 * hash + Objects.hashCode(this.categorie);
+        hash = 53 * hash + this.disponible;
         return hash;
     }
 
@@ -157,7 +175,13 @@ public class Livre implements Serializable {
             return false;
         }
         final Livre other = (Livre) obj;
+        if (this.disponible != other.disponible) {
+            return false;
+        }
         if (!Objects.equals(this.isbn, other.isbn)) {
+            return false;
+        }
+        if (!Objects.equals(this.titre, other.titre)) {
             return false;
         }
         if (!Objects.equals(this.auteur, other.auteur)) {
@@ -171,6 +195,8 @@ public class Livre implements Serializable {
         }
         return true;
     }
-    
+
+  
+   
     
 }
