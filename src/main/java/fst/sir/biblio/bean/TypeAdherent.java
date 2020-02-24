@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author HP
  */
 @Entity
-class TypeAdherent implements Serializable{
+public class TypeAdherent implements Serializable{
     
     /**
 	 * 

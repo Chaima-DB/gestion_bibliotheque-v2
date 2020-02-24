@@ -11,7 +11,7 @@ public interface AdherentService {
 	 Adherent findByCin(String cin);
 	 List<Adherent> findByDateInscription(Date dateInscription);
 	 Adherent findByEmail(String email );
-	 List<Adherent> findByprofession(String profession);
+	
 
 
 }
