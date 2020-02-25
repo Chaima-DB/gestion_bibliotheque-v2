@@ -1,4 +1,4 @@
-package fst.sir.biblio.ws;
+package fst.sir.biblio.ws.rest;
 
 import java.util.Date;
 import java.util.List;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fst.sir.biblio.bean.Adherent;
-import fst.sir.biblio.service.AdherentService;
-import fst.sir.biblio.service.TypeAdherentService;
+import fst.sir.biblio.service.facade.AdherentService;
+import fst.sir.biblio.service.facade.TypeAdherentService;
 
 @Controller
 @RequestMapping("/biblio/adherent/")

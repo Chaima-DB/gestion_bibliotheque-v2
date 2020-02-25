@@ -1,4 +1,4 @@
-package fst.sir.biblio.serviceimpl;
+package fst.sir.biblio.service.serviceImpl;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import fst.sir.biblio.bean.Adherent;
 import fst.sir.biblio.dao.TypeAdherentDao;
-import fst.sir.biblio.service.TypeAdherentService;
+import fst.sir.biblio.service.facade.TypeAdherentService;
 
 @Service
 public class TypeAdherentServiceImpl implements TypeAdherentService{

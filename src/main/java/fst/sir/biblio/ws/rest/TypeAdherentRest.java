@@ -1,4 +1,4 @@
-package fst.sir.biblio.ws;
+package fst.sir.biblio.ws.rest;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fst.sir.biblio.bean.Adherent;
-import fst.sir.biblio.service.TypeAdherentService;
+import fst.sir.biblio.service.facade.TypeAdherentService;
 
 @Controller
 @RequestMapping("/biblio/typeadherent")

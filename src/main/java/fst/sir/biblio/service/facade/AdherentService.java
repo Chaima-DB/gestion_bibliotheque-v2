@@ -1,4 +1,4 @@
-package fst.sir.biblio.service;
+package fst.sir.biblio.service.facade;
 
 import java.util.Date;
 import java.util.List;
