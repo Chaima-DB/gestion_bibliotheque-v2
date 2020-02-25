@@ -33,6 +33,8 @@ public class EmpruntDetail implements Serializable {
     private Livre livre;
     @ManyToOne
     private Emprunt emprunt;
+    @ManyToOne
+    private Adherent adherent;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateRetourPrevu;
     @Temporal(javax.persistence.TemporalType.DATE)
