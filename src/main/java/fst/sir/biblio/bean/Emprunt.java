@@ -5,7 +5,9 @@
  */
 package fst.sir.biblio.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -14,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -23,32 +26,43 @@ import javax.persistence.OneToMany;
 public class Emprunt implements Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String ref;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date dateEmprunt;
     @OneToMany(mappedBy = "emprunt")
     private List<EmpruntDetail> empruntDetails;
-    
+
     @ManyToOne
-    private Livre livre;
-    
+    private Adherent adherent;
+
     public Emprunt() {
     }
 
-    
     public Emprunt(Long id, String ref) {
         this.id = id;
         this.ref = ref;
     }
 
-    public Emprunt(Long id, String ref, List<EmpruntDetail> empruntDetails) {
+    public Emprunt(Long id, String ref, Date dateEmprunt, Adherent adherent) {
+        this.id = id;
+        this.ref = ref;
+        this.dateEmprunt = dateEmprunt;
+        this.adherent = adherent;
+    }
+    
+
+    public Emprunt(Long id, String ref, List<EmpruntDetail> empruntDetails, Adherent adherent) {
         this.id = id;
         this.ref = ref;
         this.empruntDetails = empruntDetails;
+        this.adherent = adherent;
     }
 
     public Long getId() {
@@ -67,6 +81,14 @@ public class Emprunt implements Serializable {
         this.ref = ref;
     }
 
+    public Date getDateEmprunt() {
+        return dateEmprunt;
+    }
+
+    public void setDateEmprunt(Date dateEmprunt) {
+        this.dateEmprunt = dateEmprunt;
+    }
+
     public List<EmpruntDetail> getEmpruntDetails() {
         return empruntDetails;
     }
@@ -75,9 +97,21 @@ public class Emprunt implements Serializable {
         this.empruntDetails = empruntDetails;
     }
 
+    public Adherent getAdherent() {
+        return adherent;
+    }
+
+    public void setAdherent(Adherent adherent) {
+        this.adherent = adherent;
+    }
+
+   
+
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.ref);
         return hash;
     }
 
@@ -102,5 +136,4 @@ public class Emprunt implements Serializable {
         return true;
     }
 
-    
 }
