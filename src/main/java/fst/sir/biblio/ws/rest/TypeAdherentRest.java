@@ -1,4 +1,4 @@
-package fst.sir.biblio.ws;
+package fst.sir.biblio.ws.rest;
 
 import java.util.List;
 

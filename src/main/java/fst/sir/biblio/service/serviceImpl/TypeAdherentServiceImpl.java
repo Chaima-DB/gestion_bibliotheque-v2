@@ -1,4 +1,4 @@
-package fst.sir.biblio.serviceimpl;
+package fst.sir.biblio.service.serviceImpl;
 
 import java.util.List;
 
