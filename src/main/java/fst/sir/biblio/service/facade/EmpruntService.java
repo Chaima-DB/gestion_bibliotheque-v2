@@ -16,7 +16,7 @@ public interface EmpruntService {
     Emprunt findByRef(String ref);
     List<Emprunt> findAll();
     String save(Emprunt emprunt);
-    String delete(Emprunt emprunt);
-    String update(Emprunt emprunt);
+    int delete(Emprunt emprunt);
+    int update(Emprunt emprunt);
     
 }
