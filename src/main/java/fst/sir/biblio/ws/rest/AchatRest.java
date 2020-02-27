@@ -21,7 +21,7 @@ public class AchatRest {
 private  AchatService achatService ;
 
 @GetMapping("/ref/{ref}")
-public Achat findByRef(]@PathVariable String ref) {
+public Achat findByRef(@PathVariable String ref) {
 	
 	return achatService.findByRef(ref);
 }
@@ -49,12 +49,12 @@ public int removeAchat(@PathVariable String ref) {
 	Achat remove=findByRef(ref);
 	if (remove!=null) {return -1;}
 	else { 
-		achatService.delete(remove);
+		achatService.
 		return 1;
 	}
 	
 
 
 
-
+}
 }
