@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fst.sir.biblio.bean.Adherent;
-import fst.sir.biblio.service.TypeAdherentService;
+import fst.sir.biblio.service.facade.TypeAdherentService;
 
 @Controller
 @RequestMapping("/biblio/typeadherent")

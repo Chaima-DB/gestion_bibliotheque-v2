@@ -42,7 +42,7 @@ public class Admin implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateContrat;
     private String nomPhoto;
-
+   
     public Admin() {
     }
 

@@ -10,10 +10,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import fst.sir.biblio.bean.Adherent;
 import fst.sir.biblio.dao.AdherentDao;
-import fst.sir.biblio.service.AdherentService;
+import fst.sir.biblio.service.facade.AdherentService;
 
 @Service
 public class AdherentServiceImpl implements AdherentService{
@@ -45,8 +46,35 @@ public class AdherentServiceImpl implements AdherentService{
 
 	@Override
 	public Adherent findByEmail(String email) {
-	
 		return adherentDao.findByEmail(email);
+	}
+
+	@Override
+	public int modifyByCin(String cin) {
+		Adherent adherent = findByCin(cin);
+		if(adherent==null) {
+			return -1;
+		}else{
+			adherentDao.save(adherent);
+			return 1;
+		}
+	}
+
+	@Override
+	public int removeByCin(String cin) {
+		Adherent adherent = findByCin(cin);
+		if(adherent==null) {
+			return -1;
+		}else {
+			adherentDao.delete(adherent);
+			return 1;
+		}
+	}
+
+	@GetMapping("aderent/profession/{profession}")
+	public List<Adherent> findByprofession(String profession) {
+		
+		return adherentDao.findByprofession(profession);
 	}
 
 	

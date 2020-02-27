@@ -9,10 +9,13 @@ import org.springframework.stereotype.Repository;
 import fst.sir.biblio.bean.Adherent;
 
 @Repository
-public interface AdherentDao extends JpaRepository<Adherent,Long>{
-	Adherent findByCin(String cin);
-	List<Adherent> findByDateInscription(Date dateInscription);
-	Adherent findByEmail(String email );
-	
+public interface AdherentDao extends JpaRepository<Adherent, Long> {
+	public Adherent findByCin(String cin);
+
+	public List<Adherent> findByDateInscription(Date dateInscription);
+
+	public Adherent findByEmail(String email);
+
+	public List<Adherent> findByprofession(String profession);
 
 }
