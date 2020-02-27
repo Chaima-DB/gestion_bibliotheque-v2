@@ -5,6 +5,7 @@
  */
 package fst.sir.biblio.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -33,11 +34,11 @@ public class EmpruntDetail implements Serializable {
     private Livre livre;
     @ManyToOne
     private Emprunt emprunt;
-    @ManyToOne
-    private Adherent adherent;
     @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dateRetourPrevu;
     @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dateRetourEffective;
 
     public EmpruntDetail() {
@@ -93,10 +94,9 @@ public class EmpruntDetail implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + Objects.hashCode(this.id);
-        hash = 11 * hash + Objects.hashCode(this.livre);
-        hash = 11 * hash + Objects.hashCode(this.emprunt);
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.livre);
         return hash;
     }
 
@@ -118,11 +118,10 @@ public class EmpruntDetail implements Serializable {
         if (!Objects.equals(this.livre, other.livre)) {
             return false;
         }
-        if (!Objects.equals(this.emprunt, other.emprunt)) {
-            return false;
-        }
         return true;
     }
+
+    
     
 
 
