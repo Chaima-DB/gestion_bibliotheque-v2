@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import fst.sir.biblio.bean.Adherent;
 import fst.sir.biblio.service.facade.AdherentService;
-<<<<<<< HEAD:src/main/java/fst/sir/biblio/ws/AdherentRest.java
-=======
 import fst.sir.biblio.service.facade.TypeAdherentService;
->>>>>>> 3a871f94ad053a0c99805e315e032975cf248e14:src/main/java/fst/sir/biblio/ws/rest/AdherentRest.java
+
 
 @Controller
 @RequestMapping("/biblio/adherent/")
