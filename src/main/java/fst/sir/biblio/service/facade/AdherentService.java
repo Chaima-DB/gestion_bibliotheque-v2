@@ -12,6 +12,7 @@ public interface AdherentService {
 	 List<Adherent> findByDateInscription(Date dateInscription);
 	 Adherent findByEmail(String email );
 	 public int modifyByCin(String cin);
+	 public int removeByCin(String cin);
 	
 
 

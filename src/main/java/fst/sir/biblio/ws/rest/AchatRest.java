@@ -49,7 +49,7 @@ public int removeAchat(@PathVariable String ref) {
 	Achat remove=findByRef(ref);
 	if (remove!=null) {return -1;}
 	else { 
-		achatService.
+		achatService.removeAchat(ref);
 		return 1;
 	}
 	
