@@ -6,6 +6,8 @@
 package fst.sir.biblio.service.facade;
 
 import fst.sir.biblio.bean.Emprunt;
+import fst.sir.biblio.bean.EmpruntDetail;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,9 +16,12 @@ import java.util.List;
  */
 public interface EmpruntService {
     Emprunt findByRef(String ref);
+    int deleteByRef(String ref);
     List<Emprunt> findAll();
-    String save(Emprunt emprunt);
+    String save(Emprunt emprunt, List<EmpruntDetail> empruntDetails);
     int delete(Emprunt emprunt);
     int update(Emprunt emprunt);
+    int restituer(String ref, Date dateRestitutionEffective);
+    List<Emprunt> findByRefLike(String ref);
     
 }

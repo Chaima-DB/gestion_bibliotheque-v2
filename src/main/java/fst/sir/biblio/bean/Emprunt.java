@@ -6,6 +6,7 @@
 package fst.sir.biblio.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,7 @@ public class Emprunt implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dateEmprunt;
     @OneToMany(mappedBy = "emprunt")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<EmpruntDetail> empruntDetails;
 
     @ManyToOne

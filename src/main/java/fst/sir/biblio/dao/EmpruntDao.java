@@ -6,7 +6,10 @@
 package fst.sir.biblio.dao;
 
 import fst.sir.biblio.bean.Emprunt;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,4 +19,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmpruntDao extends JpaRepository<Emprunt, Long>{
     Emprunt findByRef(String ref);
+    
+
+    int deleteByRef(String ref);
+    @Query("SELECT e FROM Emprunt e WHERE e.reference LIKE :ref")
+    List<Emprunt> findByRefLike(@Param(value = "ref")String reference);
 }
