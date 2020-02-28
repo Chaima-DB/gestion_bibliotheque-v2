@@ -136,4 +136,10 @@ public class Emprunt implements Serializable {
         return true;
     }
 
+	@Override
+	public String toString() {
+		return "Emprunt [id=" + id + ", ref=" + ref + ", dateEmprunt=" + dateEmprunt + ", empruntDetails="
+				+ empruntDetails + ", adherent=" + adherent + "]";
+	}
+
 }

@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  *
  * @author HP
@@ -32,9 +34,14 @@ public class Livre implements Serializable {
     private String isbn;
     private String titre;
     private String auteur;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date dateEdition;
     
     @ManyToOne
     private Categorie categorie;
+    @ManyToOne
+    private Theme theme;
     
     private String resume;
     private String nomPhoto;
@@ -42,161 +49,219 @@ public class Livre implements Serializable {
     private String tome;
     private int disponible;
     
-    
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateEdition;
 
     public Livre() {
     }
 
-    public Livre(Long id, String isbn, String titre, String auteur, Categorie categorie, String resume, String nomPhoto, long nbrPage, String tome, int disponible, Date dateEdition) {
-        this.id = id;
-        this.isbn = isbn;
-        this.titre = titre;
-        this.auteur = auteur;
-        this.categorie = categorie;
-        this.resume = resume;
-        this.nomPhoto = nomPhoto;
-        this.nbrPage = nbrPage;
-        this.tome = tome;
-        this.disponible = disponible;
-        this.dateEdition = dateEdition;
-    }
 
-    public Long getId() {
-        return id;
-    }
+	public Livre(Long id, String isbn, String titre, String auteur, Date dateEdition, Categorie categorie, Theme theme,
+			String resume, String nomPhoto, long nbrPage, String tome, int disponible) {
+		super();
+		this.id = id;
+		this.isbn = isbn;
+		this.titre = titre;
+		this.auteur = auteur;
+		this.dateEdition = dateEdition;
+		this.categorie = categorie;
+		this.theme = theme;
+		this.resume = resume;
+		this.nomPhoto = nomPhoto;
+		this.nbrPage = nbrPage;
+		this.tome = tome;
+		this.disponible = disponible;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getIsbn() {
-        return isbn;
-    }
+	public Livre(Long id, String isbn, String titre, String auteur, Categorie categorie, Theme theme, String nomPhoto) {
+		super();
+		this.id = id;
+		this.isbn = isbn;
+		this.titre = titre;
+		this.auteur = auteur;
+		this.categorie = categorie;
+		this.theme = theme;
+		this.nomPhoto = nomPhoto;
+	}
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
 
-    public String getTitre() {
-        return titre;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
 
-    public String getAuteur() {
-        return auteur;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
-    }
 
-    public Categorie getCategorie() {
-        return categorie;
-    }
+	public String getIsbn() {
+		return isbn;
+	}
 
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
-    }
 
-    public String getResume() {
-        return resume;
-    }
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
 
-    public void setResume(String resume) {
-        this.resume = resume;
-    }
 
-    public String getNomPhoto() {
-        return nomPhoto;
-    }
+	public String getTitre() {
+		return titre;
+	}
 
-    public void setNomPhoto(String nomPhoto) {
-        this.nomPhoto = nomPhoto;
-    }
 
-    public long getNbrPage() {
-        return nbrPage;
-    }
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
 
-    public void setNbrPage(long nbrPage) {
-        this.nbrPage = nbrPage;
-    }
 
-    public String getTome() {
-        return tome;
-    }
+	public String getAuteur() {
+		return auteur;
+	}
 
-    public void setTome(String tome) {
-        this.tome = tome;
-    }
 
-    public int getDisponible() {
-        return disponible;
-    }
+	public void setAuteur(String auteur) {
+		this.auteur = auteur;
+	}
 
-    public void setDisponible(int disponible) {
-        this.disponible = disponible;
-    }
 
-    public Date getDateEdition() {
-        return dateEdition;
-    }
+	public Date getDateEdition() {
+		return dateEdition;
+	}
 
-    public void setDateEdition(Date dateEdition) {
-        this.dateEdition = dateEdition;
-    }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.isbn);
-        hash = 53 * hash + Objects.hashCode(this.titre);
-        hash = 53 * hash + Objects.hashCode(this.auteur);
-        hash = 53 * hash + Objects.hashCode(this.categorie);
-        hash = 53 * hash + this.disponible;
-        return hash;
-    }
+	public void setDateEdition(Date dateEdition) {
+		this.dateEdition = dateEdition;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Livre other = (Livre) obj;
-        if (this.disponible != other.disponible) {
-            return false;
-        }
-        if (!Objects.equals(this.isbn, other.isbn)) {
-            return false;
-        }
-        if (!Objects.equals(this.titre, other.titre)) {
-            return false;
-        }
-        if (!Objects.equals(this.auteur, other.auteur)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.categorie, other.categorie)) {
-            return false;
-        }
-        return true;
-    }
 
-  
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+
+	public Theme getTheme() {
+		return theme;
+	}
+
+
+	public void setTheme(Theme theme) {
+		this.theme = theme;
+	}
+
+
+	public String getResume() {
+		return resume;
+	}
+
+
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+
+
+	public String getNomPhoto() {
+		return nomPhoto;
+	}
+
+
+	public void setNomPhoto(String nomPhoto) {
+		this.nomPhoto = nomPhoto;
+	}
+
+
+	public long getNbrPage() {
+		return nbrPage;
+	}
+
+
+	public void setNbrPage(long nbrPage) {
+		this.nbrPage = nbrPage;
+	}
+
+
+	public String getTome() {
+		return tome;
+	}
+
+
+	public void setTome(String tome) {
+		this.tome = tome;
+	}
+
+
+	public int getDisponible() {
+		return disponible;
+	}
+
+
+	public void setDisponible(int disponible) {
+		this.disponible = disponible;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((auteur == null) ? 0 : auteur.hashCode());
+		result = prime * result + ((categorie == null) ? 0 : categorie.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Livre other = (Livre) obj;
+		if (auteur == null) {
+			if (other.auteur != null)
+				return false;
+		} else if (!auteur.equals(other.auteur))
+			return false;
+		if (categorie == null) {
+			if (other.categorie != null)
+				return false;
+		} else if (!categorie.equals(other.categorie))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (isbn == null) {
+			if (other.isbn != null)
+				return false;
+		} else if (!isbn.equals(other.isbn))
+			return false;
+		return true;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Livre [id=" + id + ", isbn=" + isbn + ", titre=" + titre + ", auteur=" + auteur + ", dateEdition="
+				+ dateEdition + ", categorie=" + categorie + ", theme=" + theme + ", resume=" + resume + ", nomPhoto="
+				+ nomPhoto + ", nbrPage=" + nbrPage + ", tome=" + tome + ", disponible=" + disponible + "]";
+	}
+
+   
    
     
 }

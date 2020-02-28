@@ -5,10 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fst.sir.biblio.bean.Achat;
@@ -21,40 +18,24 @@ public class AchatRest {
 private  AchatService achatService ;
 
 @GetMapping("/ref/{ref}")
-public Achat findByRef(@PathVariable String ref) {
-	
+public Achat findByRef(String ref) {
 	return achatService.findByRef(ref);
 }
-
 @GetMapping("/")
 public List<Achat> findAll() {
-	
 	return achatService.findAll();
 }
-
 @PostMapping("/")
-public int save(@RequestBody Achat achat) {
-	
-	Achat fonded=findByRef(achat.getRef());
-	if (fonded!=null) {return -1;}
-	else { 
-		achatService.save(fonded); 
-		return 1;
-	}
-	
+public int save(Achat achat) {
+	return achatService.save(achat);
+}
+@PostMapping("/ref/{ref}")
+public int removeAchat(String ref) {
+	return achatService.removeAchat(ref);
 }
 
-@PutMapping("/ref/{ref}")
-public int removeAchat(@PathVariable String ref) {
-	Achat remove=findByRef(ref);
-	if (remove!=null) {return -1;}
-	else { 
-		achatService.removeAchat(ref);
-		return 1;
-	}
-	
 
 
 
 }
-}
+
