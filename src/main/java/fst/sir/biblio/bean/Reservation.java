@@ -18,8 +18,6 @@ public class Reservation implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date dateDemandeReservation;
-	private Date annulerReservation;
 	private Date dateReservation;
 	@ManyToOne
 	private Livre livre;

@@ -38,6 +38,7 @@ public class Adherent implements Serializable{
     private Date dateInscription;
     private String nomPhoto;
     private BigDecimal tel;
+    
     @ManyToOne
     private TypeAdherent typeAdherent;
 

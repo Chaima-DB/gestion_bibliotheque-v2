@@ -16,6 +16,5 @@ public interface AdherentDao extends JpaRepository<Adherent, Long> {
 
 	public Adherent findByEmail(String email);
 
-	public List<Adherent> findByprofession(String profession);
 
 }

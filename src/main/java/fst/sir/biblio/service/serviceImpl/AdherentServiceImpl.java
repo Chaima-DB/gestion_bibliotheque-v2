@@ -2,24 +2,22 @@ package fst.sir.biblio.service.serviceImpl;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import fst.sir.biblio.bean.Adherent;
 import fst.sir.biblio.dao.AdherentDao;
+import fst.sir.biblio.dao.TypeAdherentDao;
 import fst.sir.biblio.service.facade.AdherentService;
 
 @Service
 public class AdherentServiceImpl implements AdherentService{
         @Autowired
         private AdherentDao adherentDao;
+        @Autowired
+        private TypeAdherentDao taypeAdherentDao;
 	    @Override
 	public List<Adherent> findAll() {
 	
@@ -27,8 +25,13 @@ public class AdherentServiceImpl implements AdherentService{
 	}
 
 	@Override
-	public void save(Adherent adherent) {
-		adherentDao.save(adherent);
+	public int save(Adherent adherent) {
+		Adherent adherentFounded=findByCin(adherent.getCin());
+		if(adherentFounded!=null) {return -1;}else {
+			adherentDao.save(adherent);
+			return 1;
+		}
+	
 		
 	}
 
@@ -74,7 +77,7 @@ public class AdherentServiceImpl implements AdherentService{
 	@GetMapping("aderent/profession/{profession}")
 	public List<Adherent> findByprofession(String profession) {
 		
-		return adherentDao.findByprofession(profession);
+		return taypeAdherentDao.findByprofession(profession);
 	}
 
 	
