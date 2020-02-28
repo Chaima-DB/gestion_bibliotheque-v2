@@ -74,7 +74,7 @@ public class AdherentServiceImpl implements AdherentService{
 		}
 	}
 
-	@GetMapping("aderent/profession/{profession}")
+
 	public List<Adherent> findByprofession(String profession) {
 		
 		return taypeAdherentDao.findByprofession(profession);

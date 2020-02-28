@@ -15,7 +15,7 @@ import fst.sir.biblio.service.facade.AchatService;
 @Controller
 public class AchatRest {
 @Autowired
-private  AchatService achatService ;
+AchatService achatService ;
 
 @GetMapping("/ref/{ref}")
 public Achat findByRef(String ref) {
@@ -33,9 +33,6 @@ public int save(Achat achat) {
 public int removeAchat(String ref) {
 	return achatService.removeAchat(ref);
 }
-
-
-
 
 }
 

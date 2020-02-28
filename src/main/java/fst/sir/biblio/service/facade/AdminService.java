@@ -8,10 +8,8 @@ import fst.sir.biblio.bean.Admin;
 import fst.sir.biblio.bean.Livre;
 
 public interface AdminService {
-	public 	Admin findByCin(String cin);
 	public  Admin findBydateContra(Date dateContra );
 	public void ajouterAdmin(Admin admin);
-	public Admin findByEmail(String email);
 	public int ajouterAdherent(Adherent adherent);
 	public int removeAdherent(Adherent adherent);
 	public int ajouterLivre(List<Livre> livre);

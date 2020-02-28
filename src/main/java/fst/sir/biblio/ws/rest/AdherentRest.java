@@ -23,11 +23,15 @@ import fst.sir.biblio.service.facade.TypeAdherentService;
 public class AdherentRest {
 	@Autowired
 	private AdherentService adherentservice;
+	@Autowired
+	private TypeAdherentService typeAdherentService;
+	
 
 	@GetMapping("/")
 	public List<Adherent> findAll() {
 		return adherentservice.findAll();
 	}
+	
 
 	@PostMapping("/")
 	public void save(@RequestBody Adherent adherent) {
@@ -59,6 +63,10 @@ public class AdherentRest {
 	@DeleteMapping("/remove/cin/{cin}")
 	public int removeByCin(@PathVariable String cin) {
 		return adherentservice.removeByCin(cin);
+	}
+     @GetMapping("/typeadherent/profession/{profession}")
+	public List<Adherent> findByprofession(String profession) {
+		return typeAdherentService.findByprofession(profession);
 	}
 
 }

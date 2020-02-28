@@ -10,9 +10,9 @@ import fst.sir.biblio.bean.Admin;
 
 @Repository
 public interface AdminDao extends JpaRepository<Admin, Long>{
-	public 	Admin findByCin(String cin);
-	public  Admin findBydateContra(Date dateContra );
-	public Admin findByEmail(String email);
+
+	public  Admin findByDateContrat(Date dateContrat);
+
 
 	
 

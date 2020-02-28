@@ -3,11 +3,12 @@ package fst.sir.biblio.service.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import fst.sir.biblio.bean.Achat;
 import fst.sir.biblio.dao.AchatDao;
 import fst.sir.biblio.service.facade.AchatService;
-
+@Service
 public class AchatServiceImpl  implements AchatService{
 @Autowired
 private AchatDao achatDao;

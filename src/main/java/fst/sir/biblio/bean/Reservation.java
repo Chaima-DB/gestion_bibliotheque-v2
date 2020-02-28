@@ -30,21 +30,6 @@ public class Reservation implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDateDemandeReservation() {
-		return dateDemandeReservation;
-	}
-
-	public void setDateDemandeReservation(Date dateDemandeReservation) {
-		this.dateDemandeReservation = dateDemandeReservation;
-	}
-
-	public Date getAnnulerReservation() {
-		return annulerReservation;
-	}
-
-	public void setAnnulerReservation(Date annulerReservation) {
-		this.annulerReservation = annulerReservation;
-	}
 
 	public Date getDateReservation() {
 		return dateReservation;
