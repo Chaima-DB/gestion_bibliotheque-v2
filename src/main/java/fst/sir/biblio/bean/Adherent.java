@@ -6,8 +6,8 @@
 package fst.sir.biblio.bean;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,17 +37,19 @@ public class Adherent implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateInscription;
     private String nomPhoto;
+<<<<<<< HEAD
     private BigDecimal tel;
     
+=======
+    private String tel;
+>>>>>>> 2de3a589d972713c3b889b2b37a6829ca7dd1f05
     @ManyToOne
     private TypeAdherent typeAdherent;
 
     public Adherent() {
     }
-    
-    
 
-    public Adherent(Long id, String cin, String nom, String prenom, String email, Date dateInscription, String nomPhoto, TypeAdherent typeAdherent) {
+    public Adherent(Long id, String cin, String nom, String prenom, String email, Date dateInscription, String nomPhoto, String tel, TypeAdherent typeAdherent) {
         this.id = id;
         this.cin = cin;
         this.nom = nom;
@@ -55,6 +57,7 @@ public class Adherent implements Serializable{
         this.email = email;
         this.dateInscription = dateInscription;
         this.nomPhoto = nomPhoto;
+        this.tel = tel;
         this.typeAdherent = typeAdherent;
     }
 
@@ -62,19 +65,7 @@ public class Adherent implements Serializable{
         return id;
     }
 
-    public BigDecimal getTel() {
-		return tel;
-	}
-
-
-
-	public void setTel(BigDecimal tel) {
-		this.tel = tel;
-	}
-
-
-
-	public void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -126,6 +117,14 @@ public class Adherent implements Serializable{
         this.nomPhoto = nomPhoto;
     }
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
     public TypeAdherent getTypeAdherent() {
         return typeAdherent;
     }
@@ -133,7 +132,47 @@ public class Adherent implements Serializable{
     public void setTypeAdherent(TypeAdherent typeAdherent) {
         this.typeAdherent = typeAdherent;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.cin);
+        hash = 37 * hash + Objects.hashCode(this.nom);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Adherent other = (Adherent) obj;
+        if (!Objects.equals(this.cin, other.cin)) {
+            return false;
+        }
+        if (!Objects.equals(this.nom, other.nom)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Adherent{" + "id=" + id + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", dateInscription=" + dateInscription + ", nomPhoto=" + nomPhoto + ", tel=" + tel + ", typeAdherent=" + typeAdherent + '}';
+    }
     
     
+
+   
     
 }
