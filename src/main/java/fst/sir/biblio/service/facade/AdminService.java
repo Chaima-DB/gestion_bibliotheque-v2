@@ -14,7 +14,7 @@ public interface AdminService {
 	public int removeAdherent(Adherent adherent);
 	public int ajouterLivre(List<Livre> livre);
 	public int removeLivre(List<Livre>  livre);
-	
+	public Admin findByEmail(String email);
 	
 	
 

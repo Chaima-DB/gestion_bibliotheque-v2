@@ -37,12 +37,8 @@ public class Adherent implements Serializable{
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateInscription;
     private String nomPhoto;
-<<<<<<< HEAD
-    private BigDecimal tel;
-    
-=======
+
     private String tel;
->>>>>>> 2de3a589d972713c3b889b2b37a6829ca7dd1f05
     @ManyToOne
     private TypeAdherent typeAdherent;
 
