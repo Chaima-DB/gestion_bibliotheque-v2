@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fst.sir.biblio.bean;
 
 import java.io.Serializable;
@@ -18,161 +14,155 @@ import javax.persistence.Temporal;
 
 /**
  *
- * @author Aicha Elabdellaoui
+ * @author 
  */
-@Entity	
-public class Adherent implements Serializable{
-    
-    /**
+@Entity
+public class Adherent implements Serializable {
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String cin;
-    private String nom;
-    private String prenom;
-    private String email;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateInscription;
-    private String nomPhoto;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String cin;
+	private String nom;
+	private String prenom;
+	private String email;
+	@Temporal(javax.persistence.TemporalType.DATE)
+	private Date dateInscription;
+	private String nomPhoto;
+	private String tel;
+	@ManyToOne
+	private TypeAdherent typeAdherent;
 
-    
-    
+	public Adherent() {
+	}
 
-    private String tel;
+	public Adherent(Long id, String cin, String nom, String prenom, String email, Date dateInscription, String nomPhoto,
+			String tel, TypeAdherent typeAdherent) {
+		this.id = id;
+		this.cin = cin;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.dateInscription = dateInscription;
+		this.nomPhoto = nomPhoto;
+		this.tel = tel;
+		this.typeAdherent = typeAdherent;
+	}
 
-    @ManyToOne
-    private TypeAdherent typeAdherent;
+	public Long getId() {
+		return id;
+	}
 
-    public Adherent() {
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Adherent(Long id, String cin, String nom, String prenom, String email, Date dateInscription, String nomPhoto, String tel, TypeAdherent typeAdherent) {
-        this.id = id;
-        this.cin = cin;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.dateInscription = dateInscription;
-        this.nomPhoto = nomPhoto;
-        this.tel = tel;
-        this.typeAdherent = typeAdherent;
-    }
+	public String getCin() {
+		return cin;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getNom() {
+		return nom;
+	}
 
-    public String getCin() {
-        return cin;
-    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    public void setCin(String cin) {
-        this.cin = cin;
-    }
+	public String getPrenom() {
+		return prenom;
+	}
 
-    public String getNom() {
-        return nom;
-    }
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public String getPrenom() {
-        return prenom;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
+	public Date getDateInscription() {
+		return dateInscription;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setDateInscription(Date dateInscription) {
+		this.dateInscription = dateInscription;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getNomPhoto() {
+		return nomPhoto;
+	}
 
-    public Date getDateInscription() {
-        return dateInscription;
-    }
+	public void setNomPhoto(String nomPhoto) {
+		this.nomPhoto = nomPhoto;
+	}
 
-    public void setDateInscription(Date dateInscription) {
-        this.dateInscription = dateInscription;
-    }
+	public String getTel() {
+		return tel;
+	}
 
-    public String getNomPhoto() {
-        return nomPhoto;
-    }
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 
-    public void setNomPhoto(String nomPhoto) {
-        this.nomPhoto = nomPhoto;
-    }
+	public TypeAdherent getTypeAdherent() {
+		return typeAdherent;
+	}
 
-    public String getTel() {
-        return tel;
-    }
+	public void setTypeAdherent(TypeAdherent typeAdherent) {
+		this.typeAdherent = typeAdherent;
+	}
 
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 3;
+		hash = 37 * hash + Objects.hashCode(this.id);
+		hash = 37 * hash + Objects.hashCode(this.cin);
+		hash = 37 * hash + Objects.hashCode(this.nom);
+		return hash;
+	}
 
-    public TypeAdherent getTypeAdherent() {
-        return typeAdherent;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Adherent other = (Adherent) obj;
+		if (!Objects.equals(this.cin, other.cin)) {
+			return false;
+		}
+		if (!Objects.equals(this.nom, other.nom)) {
+			return false;
+		}
+		if (!Objects.equals(this.id, other.id)) {
+			return false;
+		}
+		return true;
+	}
 
-    public void setTypeAdherent(TypeAdherent typeAdherent) {
-        this.typeAdherent = typeAdherent;
-    }
+	@Override
+	public String toString() {
+		return "Adherent{" + "id=" + id + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email
+				+ ", dateInscription=" + dateInscription + ", nomPhoto=" + nomPhoto + ", tel=" + tel + ", typeAdherent="
+				+ typeAdherent + '}';
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + Objects.hashCode(this.id);
-        hash = 37 * hash + Objects.hashCode(this.cin);
-        hash = 37 * hash + Objects.hashCode(this.nom);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Adherent other = (Adherent) obj;
-        if (!Objects.equals(this.cin, other.cin)) {
-            return false;
-        }
-        if (!Objects.equals(this.nom, other.nom)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Adherent{" + "id=" + id + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email + ", dateInscription=" + dateInscription + ", nomPhoto=" + nomPhoto + ", tel=" + tel + ", typeAdherent=" + typeAdherent + '}';
-    }
-    
-    
-
-   
-    
 }
