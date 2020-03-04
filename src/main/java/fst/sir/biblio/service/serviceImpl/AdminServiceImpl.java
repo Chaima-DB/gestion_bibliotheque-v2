@@ -31,12 +31,6 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public Admin findByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int ajouterAdherent(Adherent adherent) {
 		// TODO Auto-generated method stub
 		return 0;

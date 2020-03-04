@@ -7,6 +7,7 @@ package fst.sir.biblio.bean;
 
 import java.io.Serializable;
 import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +34,7 @@ public class AchatDetail implements Serializable {
     private Fournisseur fournisseur;
     @ManyToOne
     private Achat achat;
+  
     
     private double qte;
     private double prixUnitaire;
