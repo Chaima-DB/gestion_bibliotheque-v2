@@ -15,7 +15,7 @@ import fst.sir.biblio.service.facade.AdminService;
 @Service
 public class AdminServiceImpl implements AdminService{
 	@Autowired
-	private AdminDao AdminDao;
+	private AdminDao adminDao;
 
 
 	@Override
@@ -52,6 +52,12 @@ public class AdminServiceImpl implements AdminService{
 	public int removeLivre(List<Livre> livre) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public Admin findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

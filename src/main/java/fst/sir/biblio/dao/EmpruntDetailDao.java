@@ -17,6 +17,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface EmpruntDetailDao extends JpaRepository<Emprunt, Long>{
-    List<EmpruntDetail> findByEmpruntRef(String ref);
-    int deleteByEmpruntRef(String ref);
+    List<EmpruntDetail> findByRef(String ref);
+    int deleteByRef(String ref);
 }
