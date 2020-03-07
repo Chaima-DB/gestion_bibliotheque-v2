@@ -29,7 +29,7 @@ public class AdminRest {
 	@Autowired
 	AdminService adminService;
     @GetMapping("/dateContra/{dateContra}")
-	public Admin findBydateContr( Date dateContra) {
+	public Admin findBydateContra( Date dateContra) {
 		return adminService.findBydateContra(dateContra);
 	}
     @PostMapping("/")

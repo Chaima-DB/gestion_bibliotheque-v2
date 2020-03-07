@@ -30,15 +30,15 @@ public class AdminServiceImpl implements AdminService{
 		return adminDao.findByDateContrat(dateContra);
 	}
 @Autowired
-private AdherentService asherentService;
+private AdherentService adherentService;
 
 	@Override
 	public int ajouterAdherent(Adherent adherent) {
-	Adherent adherentFounded=asherentService.findByCin(adherent.getCin());
+	Adherent adherentFounded=adherentService.findByCin(adherent.getCin());
 	if(adherentFounded!=null) {return -1;
 		
 	}else {
-		asherentService.save(adherent);
+		adherentService.save(adherent);
 		return 1;
 	}}
 
@@ -46,10 +46,10 @@ private AdherentService asherentService;
 	public int removeAdherent(Adherent adherent) {
 		
 
-		Adherent adherentFounded=asherentService.findByCin(adherent.getCin());
+		Adherent adherentFounded=adherentService.findByCin(adherent.getCin());
 		if(adherentFounded==null) {return -1;
 			
-	}else {asherentService.removeByCin(adherent.getCin());
+	}else {adherentService.removeByCin(adherent.getCin());
 	return 1;
 		
 	}}
@@ -176,10 +176,10 @@ private AdherentService asherentService;
 	@Override
 	public int updateAdherent(Adherent adherent) {
 		
-		Adherent adherentFounded=asherentService.findByCin(adherent.getCin());
+		Adherent adherentFounded=adherentService.findByCin(adherent.getCin());
 		if(adherentFounded==null) {return -1;
 			
-	}else {asherentService.save(adherent);
+	}else {adherentService.save(adherent);
 	return 1;
 		
 	}
