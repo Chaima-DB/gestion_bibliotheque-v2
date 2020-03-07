@@ -7,15 +7,18 @@ package fst.sir.biblio.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
- * @author HP
+ * @author aicha
  */
 @Entity	
 public class Admin implements Serializable{
@@ -31,11 +34,12 @@ public class Admin implements Serializable{
     private String nom;
     private String prenom;
     private String sexe;
+    @Column(unique = true)
     private String email;
     private String tel;
     private String adresse;
     private String login;
-    private String mdp;
+    private String password;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateContrat;
@@ -44,35 +48,6 @@ public class Admin implements Serializable{
     public Admin() {
     }
 
-	public Admin(Long id, String cin, String nom, String prenom, String sexe, String email, String tel, String adresse,
-			String login, String mdp, Date dateContrat, String nomPhoto) {
-		super();
-		this.id = id;
-		this.cin = cin;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.sexe = sexe;
-		this.email = email;
-		this.tel = tel;
-		this.adresse = adresse;
-		this.login = login;
-		this.mdp = mdp;
-		this.dateContrat = dateContrat;
-		this.nomPhoto = nomPhoto;
-	}
-
-	public Admin(Long id, String cin, String nom, String prenom, String email, String tel, String adresse,
-			String nomPhoto) {
-		super();
-		this.id = id;
-		this.cin = cin;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.tel = tel;
-		this.adresse = adresse;
-		this.nomPhoto = nomPhoto;
-	}
 
 	public Long getId() {
 		return id;
@@ -146,12 +121,12 @@ public class Admin implements Serializable{
 		this.login = login;
 	}
 
-	public String getMdp() {
-		return mdp;
+	public String getpassword() {
+		return password;
 	}
 
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
+	public void setpassword(String mdp) {
+		this.password = password;
 	}
 
 	public Date getDateContrat() {
@@ -184,7 +159,7 @@ public class Admin implements Serializable{
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
-		result = prime * result + ((mdp == null) ? 0 : mdp.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((nomPhoto == null) ? 0 : nomPhoto.hashCode());
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
@@ -232,10 +207,10 @@ public class Admin implements Serializable{
 				return false;
 		} else if (!login.equals(other.login))
 			return false;
-		if (mdp == null) {
-			if (other.mdp != null)
+		if (password == null) {
+			if (other.password != null)
 				return false;
-		} else if (!mdp.equals(other.mdp))
+		} else if (!password.equals(other.password))
 			return false;
 		if (nom == null) {
 			if (other.nom != null)
@@ -265,12 +240,6 @@ public class Admin implements Serializable{
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Admin [id=" + id + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe
-				+ ", email=" + email + ", tel=" + tel + ", adresse=" + adresse + ", login=" + login + ", mdp=" + mdp
-				+ ", dateContrat=" + dateContrat + ", nomPhoto=" + nomPhoto + "]";
-	}
     
     
        

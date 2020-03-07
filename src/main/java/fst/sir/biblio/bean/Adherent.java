@@ -34,6 +34,8 @@ public class Adherent implements Serializable {
 	private Date dateInscription;
 	private String nomPhoto;
 	private String tel;
+	private String password;
+	private String login;
 	@ManyToOne
 	private TypeAdherent typeAdherent;
 
@@ -164,5 +166,22 @@ public class Adherent implements Serializable {
 				+ ", dateInscription=" + dateInscription + ", nomPhoto=" + nomPhoto + ", tel=" + tel + ", typeAdherent="
 				+ typeAdherent + '}';
 	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
 
 }

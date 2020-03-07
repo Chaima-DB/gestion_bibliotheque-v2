@@ -11,7 +11,9 @@ import fst.sir.biblio.bean.Admin;
 @Repository
 public interface AdminDao extends JpaRepository<Admin, Long>{
 
-	public  Admin findByDateContrat(Date dateContrat);
+	Admin findByDateContrat(Date dateContrat);
+	Admin findByEmail(String email);
+	
 
 
 	
