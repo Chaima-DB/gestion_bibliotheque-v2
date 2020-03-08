@@ -72,10 +72,6 @@ public interface AdminService {
 
 	int updateAchatDetail(AchatDetail achatDetail);
 
-	int ajouterBibliotheque(Bibliotheque bibliotheque);
-
-	int removeBibliotheque(Bibliotheque bibliotheque);
-
 	int updateBibliotheque(Bibliotheque bibliotheque);
 
 	int ajouterTypeAdharent(TypeAdherent taypeAdherent);
@@ -83,11 +79,16 @@ public interface AdminService {
 	int removeTypeAdherent(TypeAdherent taypeAdherent);
 
 	int updateTypeAdherent(TypeAdherent taypeAdherent);
+
 	int updateEmpruntDetail(EmpruntDetail empruntDetail);
+
 	int removeEmpruntDetail(EmpruntDetail empruntDetail);
+
 	int ajouterEmpruntDetail(EmpruntDetail empruntDetail);
+
 	int removeAdmin(Admin admin);
-	
-	
+
+	int countNomberAdherents();
+	int countNomberEmprunts();
 
 }

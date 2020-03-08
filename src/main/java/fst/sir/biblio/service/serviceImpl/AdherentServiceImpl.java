@@ -13,8 +13,12 @@ import fst.sir.biblio.dao.TypeAdherentDao;
 import fst.sir.biblio.service.facade.AdherentService;
 
 @Service
-public class AdherentServiceImpl implements AdherentService{
-        @Autowired
+public class AdherentServiceImpl extends Exception implements AdherentService{
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		@Autowired
         private AdherentDao adherentDao;
         @Autowired
         private TypeAdherentDao taypeAdherentDao;
@@ -26,7 +30,9 @@ public class AdherentServiceImpl implements AdherentService{
 
 	@Override
 	public int save(Adherent adherent) {
+		
 		Adherent adherentFounded=findByCin(adherent.getCin());
+		
 		if(adherentFounded!=null) {return -1;}else {
 			adherentDao.save(adherent);
 			return 1;
@@ -80,5 +86,14 @@ public class AdherentServiceImpl implements AdherentService{
 		return taypeAdherentDao.findByprofession(profession);
 	}
 
-	
+	@Override
+	public Adherent findByLogin(String email, String password) {
+	return adherentDao.findByLogin(email, password);
 	}
+	
+	@Override
+	public Adherent findAdherentBymotcle(String motcle) {
+	return	adherentDao.findAdherentBymotcle( motcle);
+
+	
+	}}

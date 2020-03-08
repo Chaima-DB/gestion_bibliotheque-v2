@@ -69,4 +69,15 @@ public class AdherentRest {
 		return typeAdherentService.findByprofession(profession);
 	}
 
+    @GetMapping("/email/{email}/password/{password}")
+	public Adherent findByLogin(@PathVariable String email,@PathVariable String password) {
+		return adherentservice.findByLogin(email, password);
+	}
+    
+    
+    @GetMapping("/motcle/{motcle}")
+	public Adherent findAdherentBymotcle(@PathVariable String motcle) {
+		return adherentservice.findAdherentBymotcle(motcle);
+	}
+
 }

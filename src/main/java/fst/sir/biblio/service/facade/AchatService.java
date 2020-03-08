@@ -6,12 +6,12 @@ import fst.sir.biblio.bean.Achat;
 
 public interface AchatService {
 
-	public Achat findByRef(String ref);
-	public  List<Achat> findAll();
-	public int save(Achat achat);
-	public int removeAchat(String ref);
-	
-	
-	
-	
+	Achat findByRef(String ref);
+
+	List<Achat> findAll();
+
+	int save(Achat achat);
+
+	int removeAchat(String ref);
+
 }

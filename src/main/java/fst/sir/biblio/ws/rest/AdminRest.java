@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,19 +30,19 @@ public class AdminRest {
 	@Autowired
 	AdminService adminService;
     @GetMapping("/dateContra/{dateContra}")
-	public Admin findBydateContra( Date dateContra) {
+	public Admin findBydateContra(@PathVariable  Date dateContra) {
 		return adminService.findBydateContra(dateContra);
 	}
     @PostMapping("/")
-	public int ajouterAdmin(Admin admin) {
+	public int ajouterAdmin( @RequestBody Admin admin) {
 		return adminService.ajouterAdmin(admin);
 	}
     @PostMapping("/email/{email}/password/{password}")
-	public int loginAdmin(String email, String password) {
+	public int loginAdmin(@PathVariable String email,@PathVariable String password) {
 		return adminService.loginAdmin(email, password);
 	}
     @PostMapping("/adherent/")
-	public int ajouterAdherent(Adherent adherent) {
+	public int ajouterAdherent(@RequestBody Adherent adherent) {
 		return adminService.ajouterAdherent(adherent);
 	}
    @PutMapping()

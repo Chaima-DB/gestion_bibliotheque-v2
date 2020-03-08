@@ -1,5 +1,6 @@
 package fst.sir.biblio.service.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,7 @@ import fst.sir.biblio.service.facade.AdherentService;
 import fst.sir.biblio.service.facade.AdminService;
 import fst.sir.biblio.service.facade.EmpruntDetailService;
 import fst.sir.biblio.service.facade.EmpruntService;
+import fst.sir.biblio.service.facade.TypeAdherentService;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -52,6 +54,8 @@ private ThemeService themeService;
 @Autowired 
 private LivreService livreService;
 */
+@Autowired
+private TypeAdherentService typeAdherentService;
 @Autowired
 private EmpruntService empruntService;
 @Autowired
@@ -125,8 +129,12 @@ private EmpruntDetailService empruntDetailService;
 
 	@Override
 	public int updateAchat(Achat achat) {
-		// TODO Auto-generated method stub
-		return 0;
+    Achat achatFounded=achatService.findByRef(achat.getRef());
+    if( achatFounded==null) {return -1;}else {
+    	achatService.save(achat);
+    	return 1;
+    }
+	
 	}
 
 	@Override
@@ -155,19 +163,26 @@ private EmpruntDetailService empruntDetailService;
 
 	@Override
 	public int removeAchat(Achat achat) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		Achat achatFounded=achatService.findByRef(achat.getRef());
+	    if( achatFounded==null) {return -1;}else {
+	    	achatService.removeAchat(achat.getRef());
+	    	return 1;
+	    }
 	}
 
 	@Override
 	public int ajouterAchat(Achat achat) {
-		// TODO Auto-generated method stub
-		return 0;
+		Achat achatFounded=achatService.findByRef(achat.getRef());
+	    if( achatFounded!=null) {return -1;}else {
+	    	achatService.save(achat);
+	    	return 1;
+	    }
 	}
 
 	@Override
 	public int ajouterFournisseur(Fournisseur fournisseur) {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
@@ -226,50 +241,43 @@ private EmpruntDetailService empruntDetailService;
 
 	@Override
 	public int ajouterAchatDetail(AchatDetail achatDetail) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 	@Override
 	public int removeAchatDetail(AchatDetail achatDetail) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 	@Override
 	public int updateAchatDetail(AchatDetail achatDetail) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int ajouterBibliotheque(Bibliotheque bibliotheque) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int removeBibliotheque(Bibliotheque bibliotheque) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateBibliotheque(Bibliotheque bibliotheque) {
-		// TODO Auto-generated method stub
-		return 0;
+			return 0;
 	}
 
 	@Override
 	public int ajouterTypeAdharent(TypeAdherent taypeAdherent) {
-		// TODO Auto-generated method stub
-		return 0;
+	List<Adherent> typeFounded=typeAdherentService.findByprofession(taypeAdherent.getProfession());
+		if(typeFounded!=null) {return -1;
+		}else {
+			typeAdherentService.save(taypeAdherent);
+			return 1;
+		}
+
 	}
 
 	@Override
 	public int removeTypeAdherent(TypeAdherent taypeAdherent) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		List<Adherent> typeFounded=typeAdherentService.findByprofession(taypeAdherent.getProfession());
+		if(typeFounded==null) {return -1;
+		}else {
+			typeAdherentService.deleteByprofession(taypeAdherent.getProfession());
+			
+			return 1;
+		}
+
 	}
 
 	@Override
@@ -298,6 +306,40 @@ private EmpruntDetailService empruntDetailService;
 
 	@Override
 	public int removeAdmin(Admin admin) {
-		// TODO Auto-generated method stub
+		Admin adminFounded=findByEmail(admin.getEmail());
+		if(adminFounded==null) {return -1;}else {
+		adminDao.delete(admin);
+		return 1;}
+	}
+
+	@Override
+	public int updateBibliotheque(Bibliotheque bibliotheque) {
+
 		return 0;
+	}
+
+	@Override
+	public int countNomberAdherents() {
+	int	nomberdseAdherent=0;
+		List<Adherent> listAdherent=new ArrayList<Adherent>();
+		listAdherent=adherentService.findAll();
+		for (Adherent adherent : listAdherent) {
+			nomberdseAdherent++;
+			
+			
+		}
+		return nomberdseAdherent;
+		
+	}
+
+	@Override
+	public int countNomberEmprunts() {
+		int	nomberdseEmprunts=0;
+		List<Emprunt> listEmprunts=new ArrayList<Emprunt>();
+		listEmprunts=empruntService.findAll();
+		for (Emprunt emprunt : listEmprunts) {
+			
+		}
+		return nomberdseEmprunts;
+		
 	}}

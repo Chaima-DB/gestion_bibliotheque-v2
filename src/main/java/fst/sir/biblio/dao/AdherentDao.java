@@ -4,17 +4,22 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import fst.sir.biblio.bean.Adherent;
 
 @Repository
 public interface AdherentDao extends JpaRepository<Adherent, Long> {
-	public Adherent findByCin(String cin);
+	 Adherent findByCin(String cin);
 
-	public List<Adherent> findByDateInscription(Date dateInscription);
+	 List<Adherent> findByDateInscription(Date dateInscription);
 
-	public Adherent findByEmail(String email);
-
+	 Adherent findByEmail(String email);
+	 Adherent findByLogin(String email,String password);
+	 @Query("select a from a where a.nom like %motcle%")
+	 Adherent findAdherentBymotcle(String motcle);
+	 
+	
 
 }
