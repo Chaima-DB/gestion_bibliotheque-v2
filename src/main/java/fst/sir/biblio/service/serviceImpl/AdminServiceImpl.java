@@ -338,7 +338,7 @@ private EmpruntDetailService empruntDetailService;
 		List<Emprunt> listEmprunts=new ArrayList<Emprunt>();
 		listEmprunts=empruntService.findAll();
 		for (Emprunt emprunt : listEmprunts) {
-			
+			nomberdseEmprunts++;
 		}
 		return nomberdseEmprunts;
 		
