@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import fst.sir.biblio.bean.Achat;
 import fst.sir.biblio.service.facade.AchatService;
 
 @RequestMapping("/biblio/achat/")
-@Controller
+@RestController
 public class AchatRest {
 @Autowired
 AchatService achatService ;

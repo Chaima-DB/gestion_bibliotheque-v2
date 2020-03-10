@@ -13,6 +13,7 @@ public interface AdminDao extends JpaRepository<Admin, Long>{
 
 	Admin findByDateContrat(Date dateContrat);
 	Admin findByEmail(String email);
+	Admin findByCin(String cin);
 	
 
 

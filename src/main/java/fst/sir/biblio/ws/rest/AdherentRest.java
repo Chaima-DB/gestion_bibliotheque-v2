@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import fst.sir.biblio.bean.Adherent;
 import fst.sir.biblio.service.facade.AdherentService;
 import fst.sir.biblio.service.facade.TypeAdherentService;
 
 
-@Controller
+@RestController
 @RequestMapping("/biblio/adherent/")
 public class AdherentRest {
 	@Autowired
@@ -69,10 +70,10 @@ public class AdherentRest {
 		return typeAdherentService.findByprofession(profession);
 	}
 
-    @GetMapping("/email/{email}/password/{password}")
-	public Adherent findByLogin(@PathVariable String email,@PathVariable String password) {
-		return adherentservice.findByLogin(email, password);
-	}
+//    @GetMapping("/email/{email}/password/{password}")
+//	public Adherent findByLogin(@PathVariable String email,@PathVariable String password) {
+//		return adherentservice.findByLogin(email, password);
+//	}
     
     
     @GetMapping("/motcle/{motcle}")

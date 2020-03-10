@@ -22,6 +22,6 @@ public interface EmpruntDao extends JpaRepository<Emprunt, Long>{
     
 
     int deleteByRef(String reference);
-    @Query("SELECT e FROM Emprunt e WHERE e.ref LIKE :reference")
-    List<Emprunt> findByRefLike(@Param(value = "reference")String ref);
+    //@Query("SELECT e FROM Emprunt e WHERE e.ref LIKE :reference")
+//    List<Emprunt> findByRefLike(String ref);
 }

@@ -16,9 +16,9 @@ public interface AdherentDao extends JpaRepository<Adherent, Long> {
 	 List<Adherent> findByDateInscription(Date dateInscription);
 
 	 Adherent findByEmail(String email);
-	 Adherent findByLogin(String email,String password);
-	 @Query("select a from a where a.nom like %motcle%")
-	 Adherent findAdherentBymotcle(String motcle);
+//	 Adherent findByLogin(String email,String password);
+	 //@Query("select cin from adherent where nom like %:motcle%")
+	 Adherent findAdherentByNom(String motcle);
 	 
 	
 

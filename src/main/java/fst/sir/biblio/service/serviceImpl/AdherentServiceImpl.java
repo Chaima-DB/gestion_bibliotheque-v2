@@ -85,15 +85,15 @@ public class AdherentServiceImpl extends Exception implements AdherentService{
 		
 		return taypeAdherentDao.findByprofession(profession);
 	}
-
-	@Override
-	public Adherent findByLogin(String email, String password) {
-	return adherentDao.findByLogin(email, password);
-	}
+//
+//	@Override
+//	public Adherent findByLogin(String email, String password) {
+//	return adherentDao.findByLogin(email, password);
+//	}
 	
 	@Override
 	public Adherent findAdherentBymotcle(String motcle) {
-	return	adherentDao.findAdherentBymotcle( motcle);
+	return	adherentDao.findAdherentByNom( motcle);
 
 	
 	}}

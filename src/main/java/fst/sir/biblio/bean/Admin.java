@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  *
  * @author aicha
@@ -42,6 +44,7 @@ public class Admin implements Serializable{
     private String password;
     
     @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonFormat(pattern = "dd/mm/yyyy")
     private Date dateContrat;
     private String nomPhoto;
    

@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +31,9 @@ import fst.sir.biblio.service.facade.AdminService;
 public class AdminRest {
 	@Autowired
 	AdminService adminService;
-    @GetMapping("/dateContra/{dateContra}")
-	public Admin findBydateContra(@PathVariable  Date dateContra) {
+    
+	@GetMapping("/dateContra/{dateContra}")
+	public Admin findBydateContra(@PathVariable  @DateTimeFormat(pattern = "dd/mm/yyyy")Date dateContra) {
 		return adminService.findBydateContra(dateContra);
 	}
     @PostMapping("/")
@@ -41,89 +44,21 @@ public class AdminRest {
 	public int loginAdmin(@PathVariable String email,@PathVariable String password) {
 		return adminService.loginAdmin(email, password);
 	}
-    @PostMapping("/adherent/")
-	public int ajouterAdherent(@RequestBody Adherent adherent) {
-		return adminService.ajouterAdherent(adherent);
-	}
-   @PutMapping()
-	public int removeAdherent(Adherent adherent) {
-		return adminService.removeAdherent(adherent);
-	}
-
-	public int ajouterLivre(List<Livre> livre) {
-		return adminService.ajouterLivre(livre);
-	}
-
-	public int removeLivre(List<Livre> livre) {
-		return adminService.removeLivre(livre);
-	}
-
-	public Admin findByEmail(String email) {
+    @GetMapping("/email/{email}")
+    public Admin findByEmail(@PathVariable String email) {
 		return adminService.findByEmail(email);
 	}
-
-	public int updateLivre(Livre livre) {
-		return adminService.updateLivre(livre);
+    @DeleteMapping("/delete/cin/{cin}")
+	public int removeAdminByCin(@PathVariable String cin) {
+		return adminService.removeAdminByCin(cin);
 	}
-
-	public int updateAdherent(Adherent adherent) {
-		return adminService.updateAdherent(adherent);
+    @GetMapping("/countAderent/")
+	public int countNomberAdherents() {
+		return adminService.countNomberAdherents();
 	}
-
-	public int updateFournesseur(Fournisseur fournisseur) {
-		return adminService.updateFournesseur(fournisseur);
-	}
-
-	public int updateEmprunt(Emprunt emprunt) {
-		return adminService.updateEmprunt(emprunt);
-	}
-
-	public int updateReservation(Reservation reservation) {
-		return adminService.updateReservation(reservation);
-	}
-
-	public int updateAchat(Achat achat) {
-		return adminService.updateAchat(achat);
-	}
-
-	public int updateCategorie(Categorie categorie) {
-		return adminService.updateCategorie(categorie);
-	}
-
-	public int updateTheme(Theme theme) {
-		return adminService.updateTheme(theme);
-	}
-
-	public int removeCategorie(Categorie categorie) {
-		return adminService.removeCategorie(categorie);
-	}
-
-	public int ajouterCategorie(Categorie categorie) {
-		return adminService.ajouterCategorie(categorie);
-	}
-
-	public int removeAchat(Achat achat) {
-		return adminService.removeAchat(achat);
-	}
-
-	public int ajouterAchat(Achat achat) {
-		return adminService.ajouterAchat(achat);
-	}
-
-	public int ajouterFournisseur(Fournisseur fournisseur) {
-		return adminService.ajouterFournisseur(fournisseur);
-	}
-
-	public int removeFournisseur(Fournisseur fournisseur) {
-		return adminService.removeFournisseur(fournisseur);
-	}
-
-	public int removeTheme(Theme theme) {
-		return adminService.removeTheme(theme);
-	}
-
-	public int ajouterTheme(Theme theme) {
-		return adminService.ajouterTheme(theme);
+    @GetMapping("/countEmprunt/")
+	public int countNomberEmprunts() {
+		return adminService.countNomberEmprunts();
 	}
 	
 	
