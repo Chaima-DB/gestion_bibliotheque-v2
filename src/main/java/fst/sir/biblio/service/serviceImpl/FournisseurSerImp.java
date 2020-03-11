@@ -30,6 +30,8 @@ public class FournisseurSerImp implements FournisseurService {
 			
 		}
 		
+		
+		fournisseurDao.save(forniseur);
 		return 1;
 	}
 
