@@ -10,6 +10,7 @@ import fst.sir.biblio.bean.AchatDetail;
 public interface AchatDetailDao extends JpaRepository<AchatDetail, Long>{
 	 public Achat  findByAchatRef(String ref);
 	 public int deleteByAchatRef(String ref);
+	 
 
 
 }
