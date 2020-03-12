@@ -11,6 +11,6 @@ import fst.sir.biblio.bean.TypeAdherent;
 @Repository
 public interface TypeAdherentDao extends JpaRepository<TypeAdherent, Long> {
 	List<Adherent> findByprofession(String profession);
-	int deleteByprofession(String profession);
+	int deleteByProfession(String profession);
 
 }

@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -33,6 +34,9 @@ public class Achat implements Serializable {
     
     @OneToMany  (mappedBy = "achat")
     private List<AchatDetail> AchatDetails;
+    
+    @ManyToOne
+    private Fournisseur fournisseur;
 
     public Achat() {
     }
@@ -80,6 +84,14 @@ public class Achat implements Serializable {
 
     public void setAchatDetails(List<AchatDetail> AchatDetails) {
         this.AchatDetails = AchatDetails;
+    }
+
+    public Fournisseur getFournisseur() {
+        return fournisseur;
+    }
+
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
     }
 
     @Override

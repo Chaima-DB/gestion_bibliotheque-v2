@@ -8,7 +8,8 @@ public interface FournisseurService {
 	
 	Fournisseur findByCin(String cin);
 	int save(Fournisseur forniseur);
-	List<Fournisseur> afficher();
-	void deleteByCin(String cin);
+	
+	int deleteByCin(String cin);
+	 List<Fournisseur> findAll();
 
 }

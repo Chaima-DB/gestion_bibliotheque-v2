@@ -90,6 +90,14 @@ public class AchatDetail implements Serializable {
         this.prixUnitaire = prixUnitaire;
     }
 
+    public Achat getAchat() {
+        return achat;
+    }
+
+    public void setAchat(Achat achat) {
+        this.achat = achat;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;

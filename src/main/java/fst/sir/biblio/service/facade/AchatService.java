@@ -3,6 +3,7 @@ package fst.sir.biblio.service.facade;
 import java.util.List;
 
 import fst.sir.biblio.bean.Achat;
+import fst.sir.biblio.bean.AchatDetail;
 
 public interface AchatService {
 
@@ -10,8 +11,8 @@ public interface AchatService {
 
 	List<Achat> findAll();
 
-	int save(Achat achat);
+	int deleteByRef(String ref);
 
-	int removeAchat(String ref);
+	int save(Achat achat, List<AchatDetail> achatDetails);
 
 }

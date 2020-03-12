@@ -34,7 +34,7 @@ public List<Adherent> findByprofession(String profession) {
 
 @DeleteMapping("/typeadherent/{profession}")
 	public int deleteByprofession(@PathVariable  String profession) {
-		return typeadherentservice.deleteByprofession(profession);
+		return typeadherentservice.deleteByProfession(profession);
 	}
 	
 }

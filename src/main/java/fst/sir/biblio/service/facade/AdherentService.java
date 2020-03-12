@@ -20,9 +20,10 @@ public interface AdherentService {
 
 	int removeByCin(String cin);
 
-//	Adherent findByLogin(String email, String password);
+	Adherent findByLoginAndPassword(String email, String password);
 
-	Adherent findAdherentBymotcle(String motcle);
+	Adherent findByNom(String motcle);
+
 	
 
 }

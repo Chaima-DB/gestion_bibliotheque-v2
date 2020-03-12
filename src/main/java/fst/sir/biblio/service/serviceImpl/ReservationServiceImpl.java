@@ -32,12 +32,6 @@ private	ReservationDao reservationDao;
 		
 	}
 
-	@Override
-	public boolean annulerReservation(String codereservation) {
-		if(reservationDao.findByCodeReservation(codereservation)==null) {return false;}
-		reservationDao.deleteByCodeReservation(codereservation);
-		return true;
-	}
 
 	@Override
 	public Reservation findByCodereservation(String codeReservation) {
@@ -45,11 +39,14 @@ private	ReservationDao reservationDao;
 		return reservationDao.findByCodeReservation(codeReservation);
 	}
 
-	@Override
-	public double calcule() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
+
+    @Override
+    public boolean deleteByCodeReservation(String codeReservation) {
+        if(reservationDao.findByCodeReservation(codeReservation)==null) {return false;}
+		reservationDao.deleteByCodeReservation(codeReservation);
+		return true;
+    }
 	
 	
 

@@ -37,14 +37,7 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdherentService adherentService;
 
-	/*
-	 * @Autowired private ReservationService reservationService;
-	 * 
-	 * @Autowired private ThemeService themeService;
-	 * 
-	 * @Autowired private LivreService livreService;
-	 */
-
+	
 	@Autowired
 	private EmpruntService empruntService;
 

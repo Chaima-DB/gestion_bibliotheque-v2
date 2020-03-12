@@ -8,7 +8,7 @@ import fst.sir.biblio.bean.TypeAdherent;
 public interface TypeAdherentService {
 	List<Adherent> findByprofession(String profession);
 	int save(TypeAdherent typeAdherent);
-	int deleteByprofession(String profession);
+	int deleteByProfession(String profession);
 	
 
 }

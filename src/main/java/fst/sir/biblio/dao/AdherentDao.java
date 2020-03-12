@@ -11,15 +11,18 @@ import fst.sir.biblio.bean.Adherent;
 
 @Repository
 public interface AdherentDao extends JpaRepository<Adherent, Long> {
-	 Adherent findByCin(String cin);
 
-	 List<Adherent> findByDateInscription(Date dateInscription);
+    Adherent findByCin(String cin);
 
-	 Adherent findByEmail(String email);
-//	 Adherent findByLogin(String email,String password);
-	 //@Query("select cin from adherent where nom like %:motcle%")
-	 Adherent findAdherentByNom(String motcle);
-	 
-	
+    List<Adherent> findByDateInscription(Date dateInscription);
+
+    Adherent findByEmail(String email);
+
+    Adherent findByLoginAndPassword(String email, String password);
+
+    int deleteByCin(String cin);
+
+//    @Query("select nom from adherent where nom like %:motcle%")
+    List<Adherent> findByNom(String motcle);
 
 }
