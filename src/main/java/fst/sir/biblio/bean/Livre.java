@@ -31,6 +31,7 @@ public class Livre implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String isbn;
+    private int nbrJourEmprunt;
     private String titre;
     private String auteur;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -47,40 +48,19 @@ public class Livre implements Serializable {
     private long nbrPage;
     private String tome;
     private int disponible;
-    
 
-    public Livre() {
+    public int getNbrJourEmprunt() {
+        return nbrJourEmprunt;
     }
 
+    public void setNbrJourEmprunt(int nbrJourEmprunt) {
+        this.nbrJourEmprunt = nbrJourEmprunt;
+    }
+    
 
-	public Livre(Long id, String isbn, String titre, String auteur, Date dateEdition, Categorie categorie, Theme theme,
-			String resume, String nomPhoto, long nbrPage, String tome, int disponible) {
-		super();
-		this.id = id;
-		this.isbn = isbn;
-		this.titre = titre;
-		this.auteur = auteur;
-		this.dateEdition = dateEdition;
-		this.categorie = categorie;
-		this.theme = theme;
-		this.resume = resume;
-		this.nomPhoto = nomPhoto;
-		this.nbrPage = nbrPage;
-		this.tome = tome;
-		this.disponible = disponible;
-	}
+   
 
-
-	public Livre(Long id, String isbn, String titre, String auteur, Categorie categorie, Theme theme, String nomPhoto) {
-		super();
-		this.id = id;
-		this.isbn = isbn;
-		this.titre = titre;
-		this.auteur = auteur;
-		this.categorie = categorie;
-		this.theme = theme;
-		this.nomPhoto = nomPhoto;
-	}
+   
 
 
 	public Long getId() {

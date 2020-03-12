@@ -24,10 +24,10 @@ import javax.persistence.Temporal;
 public class EmpruntDetail implements Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
@@ -121,9 +121,4 @@ public class EmpruntDetail implements Serializable {
         return true;
     }
 
-    
-    
-
-
-    
 }

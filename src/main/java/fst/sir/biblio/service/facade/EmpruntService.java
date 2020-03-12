@@ -18,10 +18,8 @@ public interface EmpruntService {
     Emprunt findByRef(String ref);
     int deleteByRef(String ref);
     List<Emprunt> findAll();
-    String save(Emprunt emprunt, List<EmpruntDetail> empruntDetails);
-    int delete(Emprunt emprunt);
-    int update(Emprunt emprunt);
-    int restituer(String ref, Date dateRestitutionEffective);
-    List<Emprunt> findByRefLike(String ref);
+    int save(Emprunt emprunt, List<EmpruntDetail> empruntDetails);
+//    int restituer(String ref, Date dateRetourEffective);
+    List<Emprunt> findByAdherentCin(String cin);
     
 }

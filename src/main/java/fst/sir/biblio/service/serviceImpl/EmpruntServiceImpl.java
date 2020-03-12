@@ -5,6 +5,7 @@
  */
 package fst.sir.biblio.service.serviceImpl;
 
+import fst.sir.biblio.bean.Adherent;
 import fst.sir.biblio.bean.Emprunt;
 import fst.sir.biblio.bean.EmpruntDetail;
 import fst.sir.biblio.dao.EmpruntDao;
@@ -26,6 +27,9 @@ public class EmpruntServiceImpl implements EmpruntService {
 
     @Autowired
     private EmpruntDao empruntDao;
+    
+//    @Autowired
+//    private EmpruntDetail empruntDetail;
     @Autowired
     private AdherentService adherentService;
 
@@ -56,29 +60,42 @@ public class EmpruntServiceImpl implements EmpruntService {
         return empruntDao.findAll();
     }
 
+//    @Override
+//    public int restituer(String ref, Date dateRestitutionEffective) {
+//        Emprunt emprunt = findByRef(ref);
+//        if (emprunt == null) {
+//            return -1;
+//        } else if (empruntDetail.getDateRetourEffective() != null) {
+//            return -1;
+//        } else {
+//            empruntDetail.setDateRetourEffective(dateRestitutionEffective);
+//            empruntDao.save(emprunt);
+//        return 1;
+//        }
+//    }
+
     @Override
-    public String save(Emprunt emprunt, List<EmpruntDetail> empruntDetails) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int save(Emprunt emprunt, List<EmpruntDetail> empruntDetails) {
+         Emprunt foundedEmprunt = findByRef(emprunt.getRef());
+        Adherent adherent = adherentService.findByCin(emprunt.getAdherent().getCin());
+        if (foundedEmprunt != null) {
+            return -1;
+        } else if (adherent == null) {
+            return -2;
+        
+        } else if (!empruntDetailService.validateEmpruntDetail(emprunt, empruntDetails)) {
+            return -3;
+        } else {
+            emprunt.setAdherent(adherent);
+            emprunt.setDateEmprunt(new Date());
+            empruntDao.save(emprunt);
+            empruntDetailService.save(emprunt, empruntDetails);
+            return 1;
+        }
     }
 
     @Override
-    public int delete(Emprunt emprunt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Emprunt> findByAdherentCin(String cin) {
+        return empruntDao.findByAdherentCin(cin);
     }
-
-    @Override
-    public int update(Emprunt emprunt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int restituer(String ref, Date dateRestitutionEffective) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Emprunt> findByRefLike(String ref) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

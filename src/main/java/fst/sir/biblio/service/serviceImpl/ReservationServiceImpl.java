@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import fst.sir.biblio.bean.Reservation;
 import fst.sir.biblio.dao.ReservationDao;
 import fst.sir.biblio.service.facade.ReservationService;
-
+import org.springframework.stereotype.Service;
+@Service
 public class ReservationServiceImpl implements ReservationService {
 
 	

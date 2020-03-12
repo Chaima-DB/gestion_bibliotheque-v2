@@ -5,7 +5,6 @@
  */
 package fst.sir.biblio.dao;
 
-import fst.sir.biblio.bean.Emprunt;
 import fst.sir.biblio.bean.EmpruntDetail;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Repository;
  * @author HP
  */
 @Repository
-public interface EmpruntDetailDao extends JpaRepository<Emprunt, Long>{
-    List<EmpruntDetail> findByRef(String ref);
-    int deleteByRef(String ref);
+public interface EmpruntDetailDao extends JpaRepository<EmpruntDetail, Long>{
+    public List<EmpruntDetail> findByEmpruntRef(String ref);
+    public int deleteByEmpruntRef(String ref);
 }

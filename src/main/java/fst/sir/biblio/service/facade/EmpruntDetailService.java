@@ -19,4 +19,5 @@ public interface EmpruntDetailService {
     public List<EmpruntDetail> findByEmpruntRef(String ref);
     public int deleteByEmpruntRef(String ref);
     
+    
 }

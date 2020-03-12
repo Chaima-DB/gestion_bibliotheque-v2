@@ -1,7 +1,6 @@
 package fst.sir.biblio.ws.rest;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -9,20 +8,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fst.sir.biblio.bean.Achat;
-import fst.sir.biblio.bean.Adherent;
+
 import fst.sir.biblio.bean.Admin;
-import fst.sir.biblio.bean.Categorie;
-import fst.sir.biblio.bean.Emprunt;
-import fst.sir.biblio.bean.Fournisseur;
-import fst.sir.biblio.bean.Livre;
-import fst.sir.biblio.bean.Reservation;
-import fst.sir.biblio.bean.Theme;
 import fst.sir.biblio.service.facade.AdminService;
 
 

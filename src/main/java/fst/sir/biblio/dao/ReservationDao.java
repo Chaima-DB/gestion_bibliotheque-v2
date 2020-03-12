@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import fst.sir.biblio.bean.Reservation;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public interface ReservationDao extends JpaRepository<Reservation,Long>{
 	
 	public Reservation findByCodeReservation(String codeReserString);
