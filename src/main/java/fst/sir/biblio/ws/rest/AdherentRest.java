@@ -65,8 +65,8 @@ public class AdherentRest {
 		return adherentservice.removeByCin(cin);
 	}
      @GetMapping("/typeadherent/profession/{profession}")
-	public List<Adherent> findByprofession(String profession) {
-		return typeAdherentService.findByprofession(profession);
+	public List<Adherent> findByProfession(String profession) {
+		return typeAdherentService.findByProfession(profession);
 	}
 
 //    @GetMapping("/email/{email}/password/{password}")
@@ -75,9 +75,7 @@ public class AdherentRest {
 //	}
     
     
-    @GetMapping("/motcle/{motcle}")
-	public Adherent findAdherentBymotcle(@PathVariable String motcle) {
-		return adherentservice.findByNom(motcle);
-	}
+    
+	
 
 }

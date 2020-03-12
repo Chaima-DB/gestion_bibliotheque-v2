@@ -20,12 +20,6 @@ import fst.sir.biblio.service.facade.TypeAdherentService;
 public class TypeAdherentRest {
 	@Autowired
 private TypeAdherentService typeadherentservice ;
-	
-	@GetMapping("/profession/{profession}")
-public List<Adherent> findByprofession(String profession) {
-		
-		return typeadherentservice.findByprofession(profession);
-	}
 
 	@PostMapping("/")
 	public int save(@RequestBody TypeAdherent typeAdherent) {
@@ -33,9 +27,13 @@ public List<Adherent> findByprofession(String profession) {
 	}
 
 @DeleteMapping("/typeadherent/{profession}")
-	public int deleteByprofession(@PathVariable  String profession) {
+	public int deleteByProfession(@PathVariable  String profession) {
 		return typeadherentservice.deleteByProfession(profession);
 	}
+@GetMapping("/profession/{profession}")
+    public List<Adherent> findByProfession(String profession) {
+        return typeadherentservice.findByProfession(profession);
+    }
 	
 }
 

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import fst.sir.biblio.bean.Adherent;
+import org.springframework.data.repository.query.Param;
 
 @Repository
 public interface AdherentDao extends JpaRepository<Adherent, Long> {
@@ -22,7 +23,7 @@ public interface AdherentDao extends JpaRepository<Adherent, Long> {
 
     int deleteByCin(String cin);
 
-//    @Query("select nom from adherent where nom like %:motcle%")
-    List<Adherent> findByNom(String motcle);
+//    @Query("select a from adherent a where a.nom like :motcle")
+//    List<Adherent> findByMotCle(@Param(value = "motcle") String motcle);
 
 }

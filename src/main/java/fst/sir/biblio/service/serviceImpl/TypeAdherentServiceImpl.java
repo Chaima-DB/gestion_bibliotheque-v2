@@ -17,14 +17,8 @@ public class TypeAdherentServiceImpl implements TypeAdherentService {
     private TypeAdherentDao typeadherentdao;
 
     @Override
-    public List<Adherent> findByprofession(String profession) {
-
-        return typeadherentdao.findByprofession(profession);
-    }
-
-    @Override
     public int save(TypeAdherent typeAdherent) {
-        List<Adherent> typeFounded = findByprofession(typeAdherent.getProfession());
+        List<Adherent> typeFounded = findByProfession(typeAdherent.getProfession());
         if (typeFounded != null) {
             return -1;
         } else {
@@ -36,7 +30,7 @@ public class TypeAdherentServiceImpl implements TypeAdherentService {
 
     @Override
     public int deleteByProfession(String profession) {
-        List<Adherent> typeAdherentFounded = findByprofession(profession);
+        List<Adherent> typeAdherentFounded = findByProfession(profession);
         if (typeAdherentFounded == null) {
             return -1;
         } else {
@@ -44,4 +38,11 @@ public class TypeAdherentServiceImpl implements TypeAdherentService {
             return 1;
         }
     }
+
+    @Override
+    public List<Adherent> findByProfession(String profession) {
+        return typeadherentdao.findByProfession(profession);
+    }
+
+    
 }

@@ -100,9 +100,9 @@ public class AdherentServiceImpl implements AdherentService {
         }
     }
 
-    public List<Adherent> findByprofession(String profession) {
+    public List<Adherent> findByProfession(String profession) {
 
-        return taypeAdherentDao.findByprofession(profession);
+        return taypeAdherentDao.findByProfession(profession);
     }
 
     @Override
@@ -116,10 +116,10 @@ public class AdherentServiceImpl implements AdherentService {
 
     }
 
-    @Override
-    public Adherent findByNom(String motcle) {
-        return (Adherent) adherentDao.findByNom(motcle);
 
-    }
+//    @Override
+//    public List<Adherent> findByMotCle(String motcle) {
+//       return adherentDao.findByMotCle(motcle);
+//    }
 
 }

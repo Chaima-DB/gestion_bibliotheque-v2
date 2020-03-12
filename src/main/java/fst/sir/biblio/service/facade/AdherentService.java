@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import fst.sir.biblio.bean.Adherent;
+import org.springframework.data.repository.query.Param;
 
 public interface AdherentService {
 	List<Adherent> findAll();
@@ -22,7 +23,7 @@ public interface AdherentService {
 
 	Adherent findByLoginAndPassword(String email, String password);
 
-	Adherent findByNom(String motcle);
+//	List<Adherent> findByMotCle(@Param(value = "motcle") String motcle);
 
 	
 
