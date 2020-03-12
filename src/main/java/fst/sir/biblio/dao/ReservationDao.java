@@ -11,8 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface ReservationDao extends JpaRepository<Reservation,Long>{
 	
 	public Reservation findByCodeReservation(String codeReserString);
-	
-	public boolean annulerReservation(String codeReservation);
 	public void deleteByCodeReservation(String codeReserString);
 	List<Reservation> findByDateReservation(String codeReservation);
 	
