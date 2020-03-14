@@ -66,7 +66,7 @@ public class EmpruntServiceImpl implements EmpruntService {
 //        if (emprunt == null) {
 //            return -1;
 //        } else if (empruntDetail.getDateRetourEffective() != null) {
-//            return -1;
+//            return -2;
 //        } else {
 //            empruntDetail.setDateRetourEffective(dateRestitutionEffective);
 //            empruntDao.save(emprunt);
