@@ -37,22 +37,9 @@ public class Achat implements Serializable {
     
     @ManyToOne
     private Fournisseur fournisseur;
-
-    public Achat() {
-    }
-
-    public Achat(Long id, String ref, double total) {
-        this.id = id;
-        this.ref = ref;
-        this.total = total;
-    }
-
-    public Achat(Long id, String ref, double total, List<AchatDetail> AchatDetails) {
-        this.id = id;
-        this.ref = ref;
-        this.total = total;
-        this.AchatDetails = AchatDetails;
-    }
+   
+    @ManyToOne
+    private Bibliotheque bibliotheque;
 
     public Long getId() {
         return id;

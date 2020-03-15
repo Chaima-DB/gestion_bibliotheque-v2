@@ -28,8 +28,8 @@ public class EmpruntServiceImpl implements EmpruntService {
     @Autowired
     private EmpruntDao empruntDao;
     
-//    @Autowired
-//    private EmpruntDetail empruntDetail;
+    @Autowired
+    private EmpruntDetail empruntDetail;
     @Autowired
     private AdherentService adherentService;
 
@@ -60,19 +60,19 @@ public class EmpruntServiceImpl implements EmpruntService {
         return empruntDao.findAll();
     }
 
-//    @Override
-//    public int restituer(String ref, Date dateRestitutionEffective) {
-//        Emprunt emprunt = findByRef(ref);
-//        if (emprunt == null) {
-//            return -1;
-//        } else if (empruntDetail.getDateRetourEffective() != null) {
-//            return -2;
-//        } else {
-//            empruntDetail.setDateRetourEffective(dateRestitutionEffective);
-//            empruntDao.save(emprunt);
-//        return 1;
-//        }
-//    }
+    @Override
+    public int restituer(String ref, Date dateRestitutionEffective) {
+        Emprunt emprunt = findByRef(ref);
+        if (emprunt == null) {
+            return -1;
+        } else if (empruntDetail.getDateRetourEffective() != null) {
+            return -2;
+        } else {
+            empruntDetail.setDateRetourEffective(dateRestitutionEffective);
+            empruntDao.save(emprunt);
+        return 1;
+        }
+    }
 
     @Override
     public int save(Emprunt emprunt, List<EmpruntDetail> empruntDetails) {
