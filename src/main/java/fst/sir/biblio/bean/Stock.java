@@ -6,10 +6,12 @@
 package fst.sir.biblio.bean;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -23,13 +25,14 @@ public class Stock implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int qteAchet;
+    private int qteAchete;
     private int qteDisponible;
     private int qteLoue;
-    
+
     @OneToOne
     private Bibliotheque bibliotheque;
-    
+    @ManyToOne
+    private List<Livre> livres;
 
     public Long getId() {
         return id;
@@ -39,12 +42,12 @@ public class Stock implements Serializable {
         this.id = id;
     }
 
-    public int getQteAchet() {
-        return qteAchet;
+    public int getQteAchete() {
+        return qteAchete;
     }
 
-    public void setQteAchet(int qteAchet) {
-        this.qteAchet = qteAchet;
+    public void setQteAchete(int qteAchete) {
+        this.qteAchete = qteAchete;
     }
 
     public int getQteDisponible() {
@@ -93,8 +96,7 @@ public class Stock implements Serializable {
 
     @Override
     public String toString() {
-        return "Stock{" + "id=" + id + ", qteAchet=" + qteAchet + ", qteDisponible=" + qteDisponible + ", qteLoue=" + qteLoue + ", bibliotheque=" + bibliotheque + '}';
+        return "Stock{" + "id=" + id + ", qteAchete=" + qteAchete + ", qteDisponible=" + qteDisponible + ", qteLoue=" + qteLoue + ", bibliotheque=" + bibliotheque + '}';
     }
 
-   
 }
