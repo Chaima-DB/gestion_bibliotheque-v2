@@ -50,6 +50,7 @@ public class EmpruntDetailServiceImpl implements EmpruntDetailService{
                 e.setDateRetourPrevu(DateUtil.addDays(emprunt.getDateEmprunt(), livre.getNbrJourEmprunt()));
                 stock.setQteLoue(stock.getQteLoue()+1);
                 stock.setQteDisponible(stock.getQteAchete()-stock.getQteLoue());
+                stock.setLivre(livre);
                 empruntDetailDao.save(e);
             }
             );
