@@ -6,13 +6,11 @@
 package fst.sir.biblio.bean;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -29,10 +27,12 @@ public class Stock implements Serializable {
     private int qteDisponible;
     private int qteLoue;
 
-    @OneToOne
-    private Bibliotheque bibliotheque;
     @ManyToOne
-    private List<Livre> livres;
+    private Bibliotheque bibliotheque;
+    
+    @ManyToOne
+    private Livre livre;
+    
 
     public Long getId() {
         return id;
@@ -72,6 +72,14 @@ public class Stock implements Serializable {
 
     public void setBibliotheque(Bibliotheque bibliotheque) {
         this.bibliotheque = bibliotheque;
+    }
+
+    public Livre getLivre() {
+        return livre;
+    }
+
+    public void setLivre(Livre livre) {
+        this.livre = livre;
     }
 
     @Override

@@ -6,6 +6,7 @@
 package fst.sir.biblio.service.facade;
 
 import fst.sir.biblio.bean.Bibliotheque;
+import java.util.List;
 
 /**
  *
@@ -14,4 +15,7 @@ import fst.sir.biblio.bean.Bibliotheque;
 
 public interface BibliothequeService {
     Bibliotheque findByRef(String ref);
+    Bibliotheque findByNom(String nom);
+    List<Bibliotheque> findAll();
+    int save(Bibliotheque bibliotheque);
 }

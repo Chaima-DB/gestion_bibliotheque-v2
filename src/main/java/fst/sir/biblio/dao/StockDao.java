@@ -16,4 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StockDao extends JpaRepository<Stock, Long>{
     Stock findByBibliothequeRef(String ref);
+    Stock findByBibliothequeNom(String nom);
 }

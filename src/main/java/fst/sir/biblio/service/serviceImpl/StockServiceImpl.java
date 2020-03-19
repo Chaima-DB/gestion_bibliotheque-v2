@@ -5,11 +5,10 @@
  */
 package fst.sir.biblio.service.serviceImpl;
 
-import fst.sir.biblio.bean.Bibliotheque;
 import fst.sir.biblio.bean.Stock;
 import fst.sir.biblio.dao.StockDao;
-import fst.sir.biblio.service.facade.BibliothequeService;
 import fst.sir.biblio.service.facade.StockService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +44,16 @@ public class StockServiceImpl implements StockService {
         return -1;
         }
        
+    }
+
+    @Override
+    public Stock findByBibliothequeNom(String nom) {
+        return stockDao.findByBibliothequeNom(nom);
+    }
+
+    @Override
+    public List<Stock> findAll() {
+        return stockDao.findAll();
     }
 
     

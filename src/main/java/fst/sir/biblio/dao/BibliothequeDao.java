@@ -16,4 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BibliothequeDao extends JpaRepository<Bibliotheque, Long>{
     Bibliotheque findByRef(String ref);
+    Bibliotheque findByNom(String nom);
+    
 }
