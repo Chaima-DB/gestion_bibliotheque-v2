@@ -36,7 +36,7 @@ public class AchatDetail implements Serializable {
     private Achat achat;
   
     
-    private double qte;
+    private double qte; 
     private double prixUnitaire;
 
     public AchatDetail() {

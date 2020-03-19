@@ -27,14 +27,13 @@ public class EmpruntServiceImpl implements EmpruntService {
 
     @Autowired
     private EmpruntDao empruntDao;
-    
-    @Autowired
-    private EmpruntDetail empruntDetail;
+
     @Autowired
     private AdherentService adherentService;
 
     @Autowired
     private EmpruntDetailService empruntDetailService;
+    private EmpruntDetail empruntDetail = new EmpruntDetail();
 
     @Override
     public Emprunt findByRef(String ref) {
@@ -70,19 +69,19 @@ public class EmpruntServiceImpl implements EmpruntService {
         } else {
             empruntDetail.setDateRetourEffective(dateRestitutionEffective);
             empruntDao.save(emprunt);
-        return 1;
+            return 1;
         }
     }
 
     @Override
     public int save(Emprunt emprunt, List<EmpruntDetail> empruntDetails) {
-         Emprunt foundedEmprunt = findByRef(emprunt.getRef());
+        Emprunt foundedEmprunt = findByRef(emprunt.getRef());
         Adherent adherent = adherentService.findByCin(emprunt.getAdherent().getCin());
         if (foundedEmprunt != null) {
             return -1;
         } else if (adherent == null) {
             return -2;
-        
+
         } else if (!empruntDetailService.validateEmpruntDetail(emprunt, empruntDetails)) {
             return -3;
         } else {

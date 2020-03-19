@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import fst.sir.biblio.bean.Achat;
 import fst.sir.biblio.bean.AchatDetail;
-import fst.sir.biblio.dao.AchatDao;
+import fst.sir.biblio.bean.Stock;
 import fst.sir.biblio.dao.AchatDetailDao;
 import fst.sir.biblio.service.facade.AchatDetailService;
 import fst.sir.biblio.service.facade.FournisseurService;
@@ -24,8 +24,15 @@ import fst.sir.biblio.service.facade.FournisseurService;
 public class AchatDetailServiceImpl implements AchatDetailService {
 	@Autowired
 	private AchatDetailDao achatDetailDao;
-	@Autowired
+        
+        @Autowired
 	private FournisseurService fournisseurService;
+        
+	private AchatDetail achatDetail = new AchatDetail();
+	
+        
+        
+        private Stock stock = new Stock();
 	
 
 
@@ -41,10 +48,10 @@ public class AchatDetailServiceImpl implements AchatDetailService {
 	
 	for (AchatDetail achatDetail : achatDetails) {
 		achatDetail .setAchat(achat);
+                updateStock();
 		achatDetailDao.save(achatDetail );
 	}
 	}
-		
 	return 1;}
 	
     @Transactional
@@ -64,6 +71,12 @@ public class AchatDetailServiceImpl implements AchatDetailService {
 		
 		return achatDetailDao.findByAchatRef(ref);
 	}
+
+    @Override
+    public void updateStock() {
+        int qte = stock.getQteAchete() ;
+      stock.setQteAchete((int) achatDetail.getQte()+qte);
+    }
 
 
 }

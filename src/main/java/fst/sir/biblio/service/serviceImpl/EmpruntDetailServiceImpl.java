@@ -8,6 +8,7 @@ package fst.sir.biblio.service.serviceImpl;
 import fst.sir.biblio.bean.Emprunt;
 import fst.sir.biblio.bean.EmpruntDetail;
 import fst.sir.biblio.bean.Livre;
+import fst.sir.biblio.bean.Stock;
 import fst.sir.biblio.dao.EmpruntDetailDao;
 import fst.sir.biblio.service.facade.EmpruntDetailService;
 import fst.sir.biblio.service.facade.LivreService;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -26,6 +28,9 @@ public class EmpruntDetailServiceImpl implements EmpruntDetailService{
     @Autowired
     private EmpruntDetailDao empruntDetailDao;
 
+    
+    private Stock stock = new Stock();
+    
     @Autowired
     private LivreService livreService;
 
@@ -34,7 +39,7 @@ public class EmpruntDetailServiceImpl implements EmpruntDetailService{
         List<EmpruntDetail> valideLivres = empruntDetails.stream().filter(ed -> livreService.findByIsbn(ed.getLivre().getIsbn()) != null).collect(Collectors.toList());
         return valideLivres.size() == empruntDetails.size();
     }
-
+@Transactional
     @Override
     public int save(Emprunt emprunt, List<EmpruntDetail> empruntDetails) {
         if (validateEmpruntDetail(emprunt, empruntDetails)) {
@@ -43,6 +48,8 @@ public class EmpruntDetailServiceImpl implements EmpruntDetailService{
                 Livre livre = livreService.findByIsbn(e.getLivre().getIsbn());
                 e.setLivre(livre);
                 e.setDateRetourPrevu(DateUtil.addDays(emprunt.getDateEmprunt(), livre.getNbrJourEmprunt()));
+                stock.setQteLoue(stock.getQteLoue()+1);
+                stock.setQteDisponible(stock.getQteAchete()-stock.getQteLoue());
                 empruntDetailDao.save(e);
             }
             );
@@ -61,6 +68,4 @@ public class EmpruntDetailServiceImpl implements EmpruntDetailService{
     public int deleteByEmpruntRef(String ref) {
         return empruntDetailDao.deleteByEmpruntRef(ref);
     }
-
-    
 }
