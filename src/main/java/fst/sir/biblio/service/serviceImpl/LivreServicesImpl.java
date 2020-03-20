@@ -65,4 +65,5 @@ public class LivreServicesImpl implements LivreService {
         livreDao.deleteByIsbn(isbn);
         return 1;
     }
+
 }

@@ -14,7 +14,7 @@ public interface AchatDetailService {
 
 	 List<AchatDetail>  findByAchatRef(String ref);
 
-	int deleteByAchattRef(String ref);
+	int deleteByAchatRef(String ref);
         
         void updateStock();
 

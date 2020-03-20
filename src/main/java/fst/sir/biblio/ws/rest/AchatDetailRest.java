@@ -27,20 +27,24 @@ public class AchatDetailRest {
 	@Autowired
 	private AchatDetailService achatDetailService;
 @PutMapping("/achat/{achat}/achatDetails/{achatDetails}")
-	public boolean validateAchatDetail(@PathVariable   Achat achat, @PathVariable  List<AchatDetail> achatDetails) {
-		return achatDetailService.validateAchatDetail(achat, achatDetails);
-	}
+    public boolean validateAchatDetail(@RequestBody Achat achat, List<AchatDetail> achatDetails) {
+        return achatDetailService.validateAchatDetail(achat, achatDetails);
+    }
 @PostMapping("/")
-	public int save(@RequestBody Achat achat,@RequestBody List<AchatDetail> achatDetails) {
-		return achatDetailService.save(achat, achatDetails);
-	}
+    public int save(@RequestBody Achat achat, List<AchatDetail> achatDetails) {
+        return achatDetailService.save(achat, achatDetails);
+    }
 @GetMapping("/ref/{ref}")
-	public List<AchatDetail> findByAchatRef(@PathVariable String ref) {
-		return achatDetailService.findByAchatRef(ref);
-	}
+    public List<AchatDetail> findByAchatRef(@PathVariable String ref) {
+        return achatDetailService.findByAchatRef(ref);
+    }
 @DeleteMapping("/ref/{ref}")
-	public int deleteByAchattRef(@PathVariable String ref) {
-		return achatDetailService.deleteByAchattRef(ref);
-	}
+    public int deleteByAchatRef(@PathVariable String ref) {
+        return achatDetailService.deleteByAchatRef(ref);
+    }
+
+    public void updateStock() {
+        achatDetailService.updateStock();
+    }
 
 }

@@ -56,7 +56,7 @@ public class AchatDetailServiceImpl implements AchatDetailService {
 	
     @Transactional
 	@Override
-	public int deleteByAchattRef(String ref) {
+	public int deleteByAchatRef(String ref) {
     	List<AchatDetail> achatDetailFounded=findByAchatRef(ref);
     	for (AchatDetail achatDetail : achatDetailFounded) {
     		

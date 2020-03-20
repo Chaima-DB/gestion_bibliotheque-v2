@@ -39,6 +39,7 @@ public class StockServiceImpl implements StockService {
         Stock founded = stockDao.findByBibliothequeRef(stock.getBibliotheque().getRef());
         if (founded != null) {
              int dispo = founded.getQteAchete()-stock.getQteLoue();
+             founded.setQteDisponible(dispo);
                 return dispo;
         }else{
         return -1;

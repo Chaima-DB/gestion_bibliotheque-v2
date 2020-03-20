@@ -53,7 +53,7 @@ private AchatDetailService achatDetailService;
 		Achat remove=findByRef(ref);
 		List<AchatDetail> achatDetails=achatDetailService.findByAchatRef(ref);
 		for (AchatDetail achatDetail : achatDetails) {
-			achatDetailService.deleteByAchattRef(ref);
+			achatDetailService.deleteByAchatRef(ref);
 			
 		}
 		achatDao.delete(remove);
