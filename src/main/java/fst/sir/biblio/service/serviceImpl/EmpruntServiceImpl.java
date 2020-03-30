@@ -6,10 +6,12 @@
 package fst.sir.biblio.service.serviceImpl;
 
 import fst.sir.biblio.bean.Adherent;
+import fst.sir.biblio.bean.Bibliotheque;
 import fst.sir.biblio.bean.Emprunt;
 import fst.sir.biblio.bean.EmpruntDetail;
 import fst.sir.biblio.dao.EmpruntDao;
 import fst.sir.biblio.service.facade.AdherentService;
+import fst.sir.biblio.service.facade.BibliothequeService;
 import fst.sir.biblio.service.facade.EmpruntDetailService;
 import fst.sir.biblio.service.facade.EmpruntService;
 import java.util.Date;
@@ -34,6 +36,9 @@ public class EmpruntServiceImpl implements EmpruntService {
     @Autowired
     private EmpruntDetailService empruntDetailService;
     private EmpruntDetail empruntDetail = new EmpruntDetail();
+    
+    @Autowired
+    private BibliothequeService bibliothequeService;
 
     @Override
     public Emprunt findByRef(String ref) {
@@ -77,18 +82,25 @@ public class EmpruntServiceImpl implements EmpruntService {
     public int save(Emprunt emprunt, List<EmpruntDetail> empruntDetails) {
         Emprunt foundedEmprunt = findByRef(emprunt.getRef());
         Adherent adherent = adherentService.findByCin(emprunt.getAdherent().getCin());
+        Bibliotheque bibliotheque = bibliothequeService.findByRef(emprunt.getBibliotheque().getRef());
         if (foundedEmprunt != null) {
             return -1;
         } else if (adherent == null) {
             return -2;
-
-        } else if (!empruntDetailService.validateEmpruntDetail(emprunt, empruntDetails)) {
+        } else if (bibliotheque == null) {
             return -3;
-        } else {
+
+        } else if (!empruntDetailService.validateEmpruntDetail(emprunt, empruntDetails )) {
+            return -4;
+        }else if (!empruntDetailService.validateStock(emprunt, empruntDetails )) {
+            return -5;
+        }else {
+            emprunt.setBibliotheque(bibliotheque);
             emprunt.setAdherent(adherent);
             emprunt.setDateEmprunt(new Date());
             empruntDao.save(emprunt);
             empruntDetailService.save(emprunt, empruntDetails);
+            
             return 1;
         }
     }

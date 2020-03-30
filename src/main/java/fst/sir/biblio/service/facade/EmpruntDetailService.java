@@ -16,6 +16,7 @@ import java.util.List;
 public interface EmpruntDetailService {
     public int save(Emprunt emprunt,List<EmpruntDetail>empruntDetails);
     public boolean validateEmpruntDetail(Emprunt emprunt,List<EmpruntDetail>empruntDetails);
+    public boolean validateStock(Emprunt emprunt,List<EmpruntDetail>empruntDetails);
     public List<EmpruntDetail> findByEmpruntRef(String ref);
     public int deleteByEmpruntRef(String ref);
     

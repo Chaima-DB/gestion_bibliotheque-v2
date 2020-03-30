@@ -32,6 +32,16 @@ public class Stock implements Serializable {
     
     @ManyToOne
     private Livre livre;
+
+    public Stock(int qteAchete,int qteDisponible, Bibliotheque bibliotheque, Livre livre) {
+        this.qteAchete = qteAchete;
+        this.bibliotheque = bibliotheque;
+        this.livre = livre;
+        this.qteDisponible =qteDisponible;
+    }
+
+    public Stock() {
+    }
     
 
     public Long getId() {

@@ -35,8 +35,8 @@ public int deleteByRef(String ref) {
 	return achatService.deleteByRef(ref);
 }
 @PostMapping("/")
-public int save(@RequestBody Achat achat, @RequestBody List<AchatDetail> achatDetails) {
-	return achatService.save(achat, achatDetails);
+public int save(@RequestBody Achat achat) {
+	return achatService.save(achat, achat.getAchatDetails());
 }
 
 }

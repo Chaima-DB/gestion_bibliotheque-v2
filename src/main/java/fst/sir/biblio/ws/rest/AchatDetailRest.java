@@ -19,32 +19,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fst.sir.biblio.bean.Achat;
 import fst.sir.biblio.bean.AchatDetail;
+import fst.sir.biblio.bean.Stock;
 import fst.sir.biblio.service.facade.AchatDetailService;
 
 @RestController
 @RequestMapping("/biblio/achatdetail")
 public class AchatDetailRest {
-	@Autowired
-	private AchatDetailService achatDetailService;
-@PutMapping("/achat/{achat}/achatDetails/{achatDetails}")
+
+    @Autowired
+    private AchatDetailService achatDetailService;
+
+    @PutMapping("/achat/{achat}/achatDetails/{achatDetails}")
     public boolean validateAchatDetail(@RequestBody Achat achat, List<AchatDetail> achatDetails) {
         return achatDetailService.validateAchatDetail(achat, achatDetails);
     }
-@PostMapping("/")
+
+    @PostMapping("/")
     public int save(@RequestBody Achat achat, List<AchatDetail> achatDetails) {
         return achatDetailService.save(achat, achatDetails);
     }
-@GetMapping("/ref/{ref}")
+
+    @GetMapping("/ref/{ref}")
     public List<AchatDetail> findByAchatRef(@PathVariable String ref) {
         return achatDetailService.findByAchatRef(ref);
     }
-@DeleteMapping("/ref/{ref}")
+
+    @DeleteMapping("/ref/{ref}")
     public int deleteByAchatRef(@PathVariable String ref) {
         return achatDetailService.deleteByAchatRef(ref);
-    }
-
-    public void updateStock() {
-        achatDetailService.updateStock();
     }
 
 }

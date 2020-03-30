@@ -30,8 +30,7 @@ public class AchatDetail implements Serializable {
     private Long id;
     @ManyToOne
     private Livre livre;
-    @ManyToOne
-    private Fournisseur fournisseur;
+
     @ManyToOne
     private Achat achat;
   
@@ -42,13 +41,7 @@ public class AchatDetail implements Serializable {
     public AchatDetail() {
     }
 
-    public AchatDetail(Long id, Livre livre, Fournisseur fournisseur, double qte, double prixUnitaire) {
-        this.id = id;
-        this.livre = livre;
-        this.fournisseur = fournisseur;
-        this.qte = qte;
-        this.prixUnitaire = prixUnitaire;
-    }
+    
 
     public Long getId() {
         return id;
@@ -64,14 +57,6 @@ public class AchatDetail implements Serializable {
 
     public void setLivre(Livre livre) {
         this.livre = livre;
-    }
-
-    public Fournisseur getFournisseur() {
-        return fournisseur;
-    }
-
-    public void setFournisseur(Fournisseur fournisseur) {
-        this.fournisseur = fournisseur;
     }
 
     public double getQte() {
@@ -102,8 +87,6 @@ public class AchatDetail implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.id);
-        hash = 89 * hash + Objects.hashCode(this.livre);
-        hash = 89 * hash + Objects.hashCode(this.fournisseur);
         return hash;
     }
 
@@ -119,16 +102,7 @@ public class AchatDetail implements Serializable {
             return false;
         }
         final AchatDetail other = (AchatDetail) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.livre, other.livre)) {
-            return false;
-        }
-        if (!Objects.equals(this.fournisseur, other.fournisseur)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.id, other.id);
     }
 
     

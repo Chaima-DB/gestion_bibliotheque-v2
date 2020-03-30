@@ -34,25 +34,12 @@ public class EmpruntDetail implements Serializable {
     private Livre livre;
     @ManyToOne
     private Emprunt emprunt;
-    @ManyToOne
-    private Bibliotheque bibliotheque;
     @Temporal(javax.persistence.TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dateRetourPrevu;
     @Temporal(javax.persistence.TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dateRetourEffective;
-
-    public EmpruntDetail() {
-    }
-
-    public EmpruntDetail(Long id, Livre livre, Emprunt emprunt, Date dateRetourPrevu, Date dateRetourEffective) {
-        this.id = id;
-        this.livre = livre;
-        this.emprunt = emprunt;
-        this.dateRetourPrevu = dateRetourPrevu;
-        this.dateRetourEffective = dateRetourEffective;
-    }
 
     public Long getId() {
         return id;
@@ -94,13 +81,7 @@ public class EmpruntDetail implements Serializable {
         this.dateRetourEffective = dateRetourEffective;
     }
 
-    public Bibliotheque getBibliotheque() {
-        return bibliotheque;
-    }
-
-    public void setBibliotheque(Bibliotheque bibliotheque) {
-        this.bibliotheque = bibliotheque;
-    }
+ 
 
     @Override
     public int hashCode() {

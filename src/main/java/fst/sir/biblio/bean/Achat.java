@@ -31,10 +31,9 @@ public class Achat implements Serializable {
     private Long id;
     private String ref;
     private double total;
-    private int qte;
     
     @OneToMany  (mappedBy = "achat")
-    private List<AchatDetail> AchatDetails;
+    private List<AchatDetail> achatDetails;
     
     @ManyToOne
     private Fournisseur fournisseur;
@@ -67,11 +66,11 @@ public class Achat implements Serializable {
     }
 
     public List<AchatDetail> getAchatDetails() {
-        return AchatDetails;
+        return achatDetails;
     }
 
     public void setAchatDetails(List<AchatDetail> AchatDetails) {
-        this.AchatDetails = AchatDetails;
+        this.achatDetails = AchatDetails;
     }
 
     public Fournisseur getFournisseur() {
@@ -80,14 +79,6 @@ public class Achat implements Serializable {
 
     public void setFournisseur(Fournisseur fournisseur) {
         this.fournisseur = fournisseur;
-    }
-
-    public int getQte() {
-        return qte;
-    }
-
-    public void setQte(int qte) {
-        this.qte = qte;
     }
 
     public Bibliotheque getBibliotheque() {

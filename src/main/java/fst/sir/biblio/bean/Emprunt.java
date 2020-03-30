@@ -8,7 +8,6 @@ package fst.sir.biblio.bean;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -40,32 +39,22 @@ public class Emprunt implements Serializable {
     private Date dateEmprunt;
     @OneToMany(mappedBy = "emprunt")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<EmpruntDetail> empruntDetails= new ArrayList();
+    
+    private List<EmpruntDetail> empruntDetails;
 
     @ManyToOne
     private Adherent adherent;
-
-    public Emprunt() {
-    }
-
-    public Emprunt(Long id, String ref) {
-        this.id = id;
-        this.ref = ref;
-    }
-
-    public Emprunt(Long id, String ref, Date dateEmprunt, Adherent adherent) {
-        this.id = id;
-        this.ref = ref;
-        this.dateEmprunt = dateEmprunt;
-        this.adherent = adherent;
-    }
+    
+     @ManyToOne
+    private Bibliotheque bibliotheque;
     
 
-    public Emprunt(Long id, String ref, List<EmpruntDetail> empruntDetails, Adherent adherent) {
-        this.id = id;
-        this.ref = ref;
-        this.empruntDetails = empruntDetails;
-        this.adherent = adherent;
+    public Bibliotheque getBibliotheque() {
+        return bibliotheque;
+    }
+
+    public void setBibliotheque(Bibliotheque bibliotheque) {
+        this.bibliotheque = bibliotheque;
     }
 
     public Long getId() {
@@ -144,9 +133,5 @@ public class Emprunt implements Serializable {
 		return "Emprunt [id=" + id + ", ref=" + ref + ", dateEmprunt=" + dateEmprunt + ", empruntDetails="
 				+ empruntDetails + ", adherent=" + adherent + "]";
 	}
-
-    public void setDateRetourEffective(Date dateRestitutionEffective) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

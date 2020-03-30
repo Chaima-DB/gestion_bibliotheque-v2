@@ -20,7 +20,7 @@ import fst.sir.biblio.bean.Fournisseur;
 import fst.sir.biblio.service.facade.FournisseurService;
 
 @RestController
-@RequestMapping("/biblio/fournesseur")
+@RequestMapping("/biblio/fournisseur")
 public class FournisseurRest {
 	@Autowired
 	private FournisseurService fournisseurService;
@@ -29,8 +29,8 @@ public class FournisseurRest {
 		return fournisseurService.findByCin(cin);
 	}
 @PostMapping("/")
-	public int save( @RequestBody Fournisseur forniseur) {
-		return fournisseurService.save(forniseur);
+	public int save( @RequestBody Fournisseur fournisseur) {
+		return fournisseurService.save(fournisseur);
 	}
 @DeleteMapping("/cin/{cin}")
 	public int deleteByCin(@PathVariable String cin) {

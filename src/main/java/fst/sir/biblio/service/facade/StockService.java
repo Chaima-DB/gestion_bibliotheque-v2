@@ -15,8 +15,10 @@ import java.util.List;
 public interface StockService {
      Stock findByBibliothequeRef(String ref);
     Stock findByBibliothequeNom(String nom);
+    public Stock findByLivreIsbn(String isbn);
     List<Stock> findAll();
+    int saveOrEdit(Stock stock);
     int save(Stock stock);
     int qteDisponible(Stock stock);
-   
+   public Stock findByBibliothequeRefAndLivreIsbn(String ref, String isbn);
 }

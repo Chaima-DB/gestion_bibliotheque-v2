@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,13 +38,21 @@ public class StockRest {
     public List<Stock> findAll() {
         return stockService.findAll();
     }
-@PutMapping("/")
+@PostMapping("/")
     public int save(@RequestBody Stock stock) {
         return stockService.save(stock);
     }
 @GetMapping("/qteDisponible/{stock}")
     public int qteDisponible(@RequestBody Stock stock) {
         return stockService.qteDisponible(stock);
+    }
+@PostMapping("/edit/")
+    public int saveOrEdit(@RequestBody Stock stock) {
+        return stockService.saveOrEdit(stock);
+    }
+@GetMapping("/ref/{ref}/isbn/{isbn}")
+    public Stock findByBibliothequeRefAndLivreIsbn(@PathVariable String ref,@PathVariable String isbn) {
+        return stockService.findByBibliothequeRefAndLivreIsbn(ref, isbn);
     }
     
     

@@ -4,6 +4,7 @@ import java.util.List;
 
 import fst.sir.biblio.bean.Achat;
 import fst.sir.biblio.bean.AchatDetail;
+import fst.sir.biblio.bean.Stock;
 
 public interface AchatDetailService {
 	
@@ -16,7 +17,4 @@ public interface AchatDetailService {
 
 	int deleteByAchatRef(String ref);
         
-        void updateStock();
-
-
 }
