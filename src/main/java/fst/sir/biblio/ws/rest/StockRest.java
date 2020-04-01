@@ -9,6 +9,7 @@ import fst.sir.biblio.bean.Stock;
 import fst.sir.biblio.service.facade.StockService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author HP
  */
 @RestController
-@RequestMapping("/biblio/stock")
+@CrossOrigin(origins = {"http://localhost:4200"})
+@RequestMapping("biblio/stock")
 public class StockRest {
     @Autowired
     private StockService  stockService;

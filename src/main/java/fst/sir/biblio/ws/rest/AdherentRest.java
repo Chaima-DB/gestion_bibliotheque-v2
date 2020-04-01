@@ -19,7 +19,7 @@ import fst.sir.biblio.service.facade.TypeAdherentService;
 
 
 @RestController
-@RequestMapping("/biblio/adherent/")
+@RequestMapping("biblio/adherent")
 public class AdherentRest {
 	@Autowired
 	private AdherentService adherentservice;

@@ -21,9 +21,11 @@ import fst.sir.biblio.bean.Achat;
 import fst.sir.biblio.bean.AchatDetail;
 import fst.sir.biblio.bean.Stock;
 import fst.sir.biblio.service.facade.AchatDetailService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
-@RequestMapping("/biblio/achatdetail")
+@CrossOrigin(origins = {"http://localhost:4200"})
+@RequestMapping("biblio/achatdetail")
 public class AchatDetailRest {
 
     @Autowired

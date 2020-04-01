@@ -5,6 +5,10 @@
  */
 package fst.sir.biblio.bean;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,8 +31,12 @@ public class Stock implements Serializable {
     private int qteDisponible;
     private int qteLoue;
 
+//    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+//    @JsonIdentityReference(alwaysAsId = true)
+    
     @ManyToOne
     private Bibliotheque bibliotheque;
+    
     
     @ManyToOne
     private Livre livre;

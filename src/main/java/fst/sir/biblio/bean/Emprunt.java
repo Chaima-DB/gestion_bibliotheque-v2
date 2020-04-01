@@ -37,9 +37,9 @@ public class Emprunt implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dateEmprunt;
+    
     @OneToMany(mappedBy = "emprunt")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    
     private List<EmpruntDetail> empruntDetails;
 
     @ManyToOne

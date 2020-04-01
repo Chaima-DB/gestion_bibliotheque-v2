@@ -17,7 +17,7 @@ import fst.sir.biblio.service.facade.AdminService;
 
 
 @RestController
-@RequestMapping("/biblio/admin")
+@RequestMapping("biblio/admin")
 public class AdminRest {
 	@Autowired
 	AdminService adminService;

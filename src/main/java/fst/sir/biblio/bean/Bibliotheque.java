@@ -28,11 +28,11 @@ public class Bibliotheque implements Serializable {
     private String nom;
     private String adresse;
 
-    @OneToMany(mappedBy = "bibliotheque")
-    private List<Achat> achats;
-
-    @OneToMany(mappedBy = "bibliotheque")
-    private List<Stock> stocks;
+//    @OneToMany(mappedBy = "bibliotheque")
+//    private List<Achat> achats;
+//
+//    @OneToMany(mappedBy = "bibliotheque")
+//    private List<Stock> stocks;
 
     public Long getId() {
         return id;
@@ -66,21 +66,6 @@ public class Bibliotheque implements Serializable {
         this.adresse = adresse;
     }
 
-    public List<Achat> getAchats() {
-        return achats;
-    }
-
-    public void setAchats(List<Achat> achats) {
-        this.achats = achats;
-    }
-
-    public List<Stock> getStocks() {
-        return stocks;
-    }
-
-    public void setStocks(List<Stock> stocks) {
-        this.stocks = stocks;
-    }
 
     @Override
     public int hashCode() {

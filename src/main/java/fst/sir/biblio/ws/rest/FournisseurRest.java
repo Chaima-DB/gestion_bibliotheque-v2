@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fst.sir.biblio.bean.Fournisseur;
 import fst.sir.biblio.service.facade.FournisseurService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
-@RequestMapping("/biblio/fournisseur")
+@CrossOrigin(origins = {"http://localhost:4200"})
+@RequestMapping("biblio/fournisseur")
 public class FournisseurRest {
 	@Autowired
 	private FournisseurService fournisseurService;

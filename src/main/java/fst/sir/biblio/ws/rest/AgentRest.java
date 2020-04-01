@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fst.sir.biblio.bean.Agent;
 import fst.sir.biblio.service.facade.AgentService;
 @RestController
-@RequestMapping("/biblio/agent")
+@RequestMapping("biblio/agent")
 public class AgentRest {
 	
 	@Autowired

@@ -16,7 +16,7 @@ import fst.sir.biblio.bean.TypeAdherent;
 import fst.sir.biblio.service.facade.TypeAdherentService;
 
 @RestController
-@RequestMapping("/biblio/typeadherent")
+@RequestMapping("biblio/typeadherent")
 public class TypeAdherentRest {
 	@Autowired
 private TypeAdherentService typeadherentservice ;
